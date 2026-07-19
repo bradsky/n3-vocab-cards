@@ -1,0 +1,11 @@
+{
+  "name": "N3 單字卡",
+  "short_name": "N3 單字卡",
+  "description": "N3 單字卡練習，支援離線使用。",
+  "lang": "zh-Hant",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#f7f4ee",
+  "theme_color": "#f7f4ee"
+}

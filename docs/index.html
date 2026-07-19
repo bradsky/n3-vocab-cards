@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>N3 單字卡</title>
+    <meta name="theme-color" content="#f7f4ee" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="N3 單字卡" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="manifest" href="./manifest.json" />
+    <style>
+      :root {
+        --paper: #f7f4ee;
+        --ink: #2f2c28;
+        --muted: #746f67;
+        --line: #d8d1c5;
+        --soft: #ebe6dc;
+        --accent: #8a2f25;
+        --accent-soft: #eadbd6;
+        --white: #fffdf8;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans TC", sans-serif;
+        letter-spacing: 0;
+      }
+
+      main {
+        width: min(880px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 40px 0 28px;
+      }
+
+      header {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 20px;
+        padding-bottom: 22px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(28px, 5vw, 48px);
+        font-weight: 500;
+      }
+
+      .subhead {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .count {
+        color: var(--muted);
+        font-size: 14px;
+        white-space: nowrap;
+      }
+
+      .study {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 32px 0 22px;
+      }
+
+      .card-shell {
+        min-height: 340px;
+        border: 1px solid var(--line);
+        background: var(--white);
+        display: grid;
+        place-items: center;
+        padding: 34px;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 620px;
+        text-align: center;
+      }
+
+      .label {
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 18px;
+      }
+
+      .front {
+        font-size: clamp(48px, 12vw, 96px);
+        line-height: 1.1;
+        font-weight: 400;
+      }
+
+      .word-reading {
+        color: var(--muted);
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .kanji {
+        font-size: clamp(34px, 8vw, 64px);
+        line-height: 1.15;
+        font-weight: 500;
+        margin-bottom: 14px;
+      }
+
+      .meaning {
+        color: var(--accent);
+        font-size: 20px;
+        margin-bottom: 22px;
+      }
+
+      .example {
+        width: min(100%, 560px);
+        margin: 0 auto;
+        padding-top: 20px;
+        border-top: 1px solid var(--line);
+        font-size: 20px;
+        line-height: 1.7;
+      }
+
+      .example-reading,
+      .example-meaning {
+        width: min(100%, 560px);
+        margin: 8px auto 0;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .example-reading { color: var(--muted); }
+      .example-meaning { color: var(--ink); }
+
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      button {
+        min-height: 46px;
+        border: 1px solid var(--line);
+        background: var(--white);
+        color: var(--ink);
+        font: inherit;
+        cursor: pointer;
+      }
+
+      button:hover { background: var(--soft); }
+      button:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 2px; }
+
+      .primary {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: var(--white);
+      }
+
+      .primary:hover { background: #1f1d1a; }
+
+      .progress-wrap {
+        height: 4px;
+        background: var(--soft);
+      }
+
+      .progress {
+        width: 0%;
+        height: 100%;
+        background: var(--accent);
+        transition: width 160ms ease;
+      }
+
+      details {
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+      }
+
+      summary {
+        cursor: pointer;
+        color: var(--muted);
+        margin-bottom: 14px;
+      }
+
+      .list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .list li {
+        border: 1px solid var(--line);
+        background: rgba(255, 253, 248, 0.68);
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+
+      .front-only .back-content,
+      .back-only .front-content { display: none; }
+
+      @media (max-width: 640px) {
+        main { width: min(100% - 22px, 880px); padding-top: 24px; }
+        header { display: block; }
+        .count { margin-top: 12px; }
+        .card-shell { min-height: 330px; padding: 24px 18px; }
+        .controls { grid-template-columns: 1fr 1fr; }
+        .example { font-size: 18px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <h1>N3 單字卡</h1>
+          <p class="subhead">正面是平假名，背面是漢字、意思和例句。每輪 55 張，順序隨機。</p>
+        </div>
+        <div class="count" id="counter">1 / 55</div>
+      </header>
+
+      <section class="study" aria-label="單字卡練習">
+        <div class="progress-wrap" aria-hidden="true"><div class="progress" id="progress"></div></div>
+        <div class="card-shell front-only" id="cardShell">
+          <article class="card" aria-live="polite">
+            <div class="front-content">
+              <div class="label">正面</div>
+              <div class="front" id="frontText"></div>
+            </div>
+            <div class="back-content">
+              <div class="label">背面</div>
+              <div class="word-reading" id="wordReadingText"></div>
+              <div class="kanji" id="kanjiText"></div>
+              <div class="meaning" id="meaningText"></div>
+              <div class="example" id="exampleText"></div>
+              <div class="example-reading" id="exampleReadingText"></div>
+              <div class="example-meaning" id="exampleMeaningText"></div>
+            </div>
+          </article>
+        </div>
+        <div class="controls">
+          <button type="button" id="prevBtn">上一張</button>
+          <button type="button" class="primary" id="flipBtn">翻面</button>
+          <button type="button" id="nextBtn">下一張</button>
+          <button type="button" id="shuffleBtn">重新洗牌</button>
+        </div>
+      </section>
+
+      <details>
+        <summary>查看本輪單字</summary>
+        <ul class="list" id="wordList"></ul>
+      </details>
+    </main>
+
+    <script>
+      const cards = [
+        { kana: "にゅうじ", kanji: "乳児", accent: "1", meaning: "嬰兒", example: "この病院には乳児のための部屋があります。", exampleReading: "このびょういんにはにゅうじのためのへやがあります。", exampleMeaning: "這間醫院有給嬰兒使用的房間。" },
+        { kana: "ようじ", kanji: "幼児", accent: "1", meaning: "幼兒", example: "このゲームは幼児でもできます。", exampleReading: "このげーむはようじでもできます。", exampleMeaning: "這個遊戲連幼兒都會玩。" },
+        { kana: "じどう", kanji: "児童", accent: "1", meaning: "兒童", example: "児童はこの公園で遊べます。", exampleReading: "じどうはこのこうえんであそべます。", exampleMeaning: "兒童可以在這個公園玩。" },
+        { kana: "ちゅうこうせい", kanji: "中高生", accent: "0", meaning: "初高中生", example: "このイベントには中高生が多く参加しました。", exampleReading: "このいべんとにはちゅうこうせいがおおくさんかしました。", exampleMeaning: "有很多初高中生參加了這個活動。" },
+        { kana: "せいねん", kanji: "青年", accent: "0", meaning: "青年", example: "青年は将来について真剣に考えています。", exampleReading: "せいねんはしょうらいについてしんけんにかんがえています。", exampleMeaning: "青年正在認真思考未來。" },
+        { kana: "ろうじん", kanji: "老人", accent: "0", meaning: "老人", example: "老人に席をゆずりました。", exampleReading: "ろうじんにせきをゆずりました。", exampleMeaning: "我把座位讓給了老人。" },
+        { kana: "きょうじゅ", kanji: "教授", accent: "0/1", meaning: "教授", example: "教授にさえ答えられない問題です。", exampleReading: "きょうじゅにさえこたえられないもんだいです。", exampleMeaning: "這是連教授都回答不出來的問題。" },
+        { kana: "かみさま", kanji: "神様", accent: "1", meaning: "神", example: "神様にお願いしました。", exampleReading: "かみさまにおねがいしました。", exampleMeaning: "我向神明祈求了。" },
+        { kana: "ぷろ", kanji: "プロ", accent: "1", meaning: "職業、專業人士", example: "プロでもミスをすることがあります。", exampleReading: "ぷろでもみすをすることがあります。", exampleMeaning: "即使是專業人士也會犯錯。" },
+        { kana: "きゃぷてん", kanji: "キャプテン", accent: "1", meaning: "隊長", example: "彼こそチームのキャプテンです。", exampleReading: "かれこそちーむのきゃぷてんです。", exampleMeaning: "他才正是隊上的隊長。" },
+        { kana: "りーだー", kanji: "リーダー", accent: "1", meaning: "領導", example: "田中さんこそこのチームのリーダーです。", exampleReading: "たなかさんこそこのちーむのりーだーです。", exampleMeaning: "田中先生才正是這個團隊的領導。" },
+        { kana: "めんばー", kanji: "メンバー", accent: "1", meaning: "隊員、成員", example: "新しいメンバーが三人入りました。", exampleReading: "あたらしいめんばーがさんにんはいりました。", exampleMeaning: "加入了三位新成員。" },
+        { kana: "ふぁん", kanji: "ファン", accent: "1", meaning: "粉絲", example: "彼女のファンは海外にもいます。", exampleReading: "かのじょのふぁんはかいがいにもいます。", exampleMeaning: "她的粉絲連海外都有。" },
+        { kana: "らいばる", kanji: "ライバル", accent: "1", meaning: "對手", example: "彼は私の一番のライバルです。", exampleReading: "かれはわたしのいちばんのらいばるです。", exampleMeaning: "他是我最大的對手。" },
+        { kana: "こじん", kanji: "個人", accent: "1", meaning: "個人", example: "個人の意見を大切にしてください。", exampleReading: "こじんのいけんをたいせつにしてください。", exampleMeaning: "請重視個人的意見。" },
+        { kana: "ほんにん", kanji: "本人", accent: "1", meaning: "本人", example: "そのことは本人でも知らないそうです。", exampleReading: "そのことはほんにんでもしらないそうです。", exampleMeaning: "聽說那件事連本人都不知道。" },
+        { kana: "あいて", kanji: "相手", accent: "3", meaning: "對象、對方", example: "相手の気持ちを考えて話しましょう。", exampleReading: "あいてのきもちをかんがえてはなしましょう。", exampleMeaning: "說話時要考慮對方的心情。" },
+        { kana: "くじ", kanji: "くじ", accent: "1", meaning: "籤、抽籤", example: "祭りでくじを引きました。", exampleReading: "まつりでくじをひきました。", exampleMeaning: "我在祭典抽了籤。" },
+        { kana: "おみくじ", kanji: "おみくじ", accent: "0", meaning: "御神籤", example: "神社でおみくじを引きました。", exampleReading: "じんじゃでおみくじをひきました。", exampleMeaning: "我在神社抽了御神籤。" },
+        { kana: "たからくじ", kanji: "宝くじ", accent: "3/4", meaning: "彩券", example: "今度こそ宝くじを当てたいです。", exampleReading: "こんどこそたからくじをあてたいです。", exampleMeaning: "這次我一定想中彩券。" },
+        { kana: "ゆうじょう", kanji: "友情", accent: "0", meaning: "友情", example: "友情こそ大切だと思います。", exampleReading: "ゆうじょうこそたいせつだとおもいます。", exampleMeaning: "我覺得友情才是重要的。" },
+        { kana: "あいじょう", kanji: "愛情", accent: "0", meaning: "愛情", example: "子供には愛情が必要です。", exampleReading: "こどもにはあいじょうがひつようです。", exampleMeaning: "孩子需要愛情。" },
+        { kana: "こんど", kanji: "今度", accent: "1", meaning: "下次、這次", example: "今度こそ試験に合格したいです。", exampleReading: "こんどこそしけんにごうかくしたいです。", exampleMeaning: "這次我一定想通過考試。" },
+        { kana: "こんかい", kanji: "今回", accent: "1", meaning: "這次", example: "今回のテストはとても難しかったです。", exampleReading: "こんかいのてすとはとてもむずかしかったです。", exampleMeaning: "這次的考試非常難。" },
+        { kana: "よそう", kanji: "予想する", accent: "0", meaning: "預想、預測", example: "結果を予想するのは難しいです。", exampleReading: "けっかをよそうするのはむずかしいです。", exampleMeaning: "預測結果很困難。" },
+        { kana: "よほう", kanji: "予報する", accent: "0", meaning: "預報", example: "明日の天気を予報します。", exampleReading: "あしたのてんきをよほうします。", exampleMeaning: "預報明天的天氣。" },
+        { kana: "そうぞう", kanji: "想像する", accent: "0", meaning: "想像", example: "未来の生活を想像してみました。", exampleReading: "みらいのせいかつをそうぞうしてみました。", exampleMeaning: "我試著想像未來的生活。" },
+        { kana: "いめーじ", kanji: "イメージする", accent: "1/2", meaning: "想像、形成印象", example: "新しい部屋のデザインをイメージしました。", exampleReading: "あたらしいへやのでざいんをいめーじしました。", exampleMeaning: "我想像了新房間的設計。" },
+        { kana: "きょうりょく", kanji: "協力する", accent: "0", meaning: "協助、合作", example: "みんなで協力して資料をまとめました。", exampleReading: "みんなできょうりょくしてしりょうをまとめました。", exampleMeaning: "大家一起合作整理了資料。" },
+        { kana: "しんよう", kanji: "信用する", accent: "0", meaning: "相信、信任", example: "私は友達を信用しています。", exampleReading: "わたしはともだちをしんようしています。", exampleMeaning: "我信任朋友。" },
+        { kana: "こうきゅう", kanji: "高級", accent: "0", meaning: "高級、高檔", example: "高級なレストランで食事をしました。", exampleReading: "こうきゅうなれすとらんでしょくじをしました。", exampleMeaning: "我在高級餐廳吃了飯。" },
+        { kana: "ふつう", kanji: "普通", accent: "0", meaning: "普通", example: "普通の生活こそ幸せだと思います。", exampleReading: "ふつうのせいかつこそしあわせだとおもいます。", exampleMeaning: "我覺得普通的生活才是幸福。" },
+        { kana: "しんぷる", kanji: "シンプル", accent: "1", meaning: "簡單、單純", example: "このデザインはシンプルで使いやすいです。", exampleReading: "このでざいんはしんぷるでつかいやすいです。", exampleMeaning: "這個設計簡單又好用。" },
+        { kana: "びみょう", kanji: "微妙", accent: "0", meaning: "微妙", example: "彼の答えは少し微妙でした。", exampleReading: "かれのこたえはすこしびみょうでした。", exampleMeaning: "他的回答有點微妙。" },
+        { kana: "りっぱ", kanji: "立派", accent: "0", meaning: "出色、氣派", example: "彼は立派な医者になりました。", exampleReading: "かれはりっぱないしゃになりました。", exampleMeaning: "他成為了一位出色的醫生。" },
+        { kana: "かんぺき", kanji: "完璧", accent: "0", meaning: "完美", example: "完璧な答えを書きたいです。", exampleReading: "かんぺきなこたえをかきたいです。", exampleMeaning: "我想寫出完美的答案。" },
+        { kana: "じゅうよう", kanji: "重要", accent: "0", meaning: "重要", example: "努力することこそ最も重要です。", exampleReading: "どりょくすることこそもっともじゅうようです。", exampleMeaning: "努力才是最重要的。" },
+        { kana: "じゅうだい", kanji: "重大", accent: "0", meaning: "重大", example: "これは重大な問題です。", exampleReading: "これはじゅうだいなもんだいです。", exampleMeaning: "這是重大的問題。" },
+        { kana: "ひじょう", kanji: "非常", accent: "0", meaning: "非常", example: "今日は非常に寒いです。", exampleReading: "きょうはひじょうにさむいです。", exampleMeaning: "今天非常冷。" },
+        { kana: "もっとも", kanji: "最も", accent: "3", meaning: "最、最為", example: "健康こそ最も大切です。", exampleReading: "けんこうこそもっともたいせつです。", exampleMeaning: "健康才是最重要的。" },
+        { kana: "つく", kanji: "付く", accent: "1/2", meaning: "附上、附著、開著", example: "部屋の電気が付いています。", exampleReading: "へやのでんきがついています。", exampleMeaning: "房間的電燈開著。" },
+        { kana: "とく", kanji: "解く", accent: "1", meaning: "解答、解開", example: "この問題は子供でも解けます。", exampleReading: "このもんだいはこどもでもとけます。", exampleMeaning: "這個問題連小孩都解得出來。" },
+        { kana: "めざす", kanji: "目指す", accent: "2", meaning: "以...為目標", example: "今年こそN3合格を目指します。", exampleReading: "ことしこそえぬさんごうかくをめざします。", exampleMeaning: "今年我一定要以通過 N3 為目標。" },
+        { kana: "かせぐ", kanji: "稼ぐ", accent: "2", meaning: "賺", example: "アルバイトでお金を稼いでいます。", exampleReading: "あるばいとでおかねをかせいでいます。", exampleMeaning: "我靠打工賺錢。" },
+        { kana: "まとまる", kanji: "まとまる", accent: "0", meaning: "整理好、統一好", example: "みんなの意見がまとまりました。", exampleReading: "みんなのいけんがまとまりました。", exampleMeaning: "大家的意見整理好了。" },
+        { kana: "しあがる", kanji: "仕上がる", accent: "3", meaning: "完成", example: "レポートがきれいに仕上がりました。", exampleReading: "れぽーとがきれいにしあがりました。", exampleMeaning: "報告漂亮地完成了。" },
+        { kana: "たまる", kanji: "貯まる", accent: "0", meaning: "存起來、積存", example: "毎月少しずつお金が貯まります。", exampleReading: "まいつきすこしずつおかねがたまります。", exampleMeaning: "每個月一點一點地把錢存起來。" },
+        { kana: "もうかる", kanji: "儲かる", accent: "3", meaning: "賺錢、有利可圖", example: "この仕事はあまり儲かりません。", exampleReading: "このしごとはあまりもうかりません。", exampleMeaning: "這份工作不太賺錢。" },
+        { kana: "あたる", kanji: "当たる", accent: "0", meaning: "中、猜中、命中", example: "宝くじが当たりました。", exampleReading: "たからくじがあたりました。", exampleMeaning: "彩券中了。" },
+        { kana: "あきらめる", kanji: "諦める", accent: "4", meaning: "放棄", example: "最後まで諦めないでください。", exampleReading: "さいごまであきらめないでください。", exampleMeaning: "請不要放棄到最後。" },
+        { kana: "まとめる", kanji: "まとめる", accent: "0", meaning: "整理、歸納", example: "今日の文法をノートにまとめました。", exampleReading: "きょうのぶんぽうをのーとにまとめました。", exampleMeaning: "我把今天的文法整理到筆記裡了。" },
+        { kana: "しあげる", kanji: "仕上げる", accent: "3", meaning: "完成", example: "今日こそこの資料を仕上げたいです。", exampleReading: "きょうこそこのしりょうをしあげたいです。", exampleMeaning: "今天我一定想完成這份資料。" },
+        { kana: "ためる", kanji: "貯める", accent: "0", meaning: "存、積蓄", example: "旅行のためにお金を貯めています。", exampleReading: "りょこうのためにおかねをためています。", exampleMeaning: "我為了旅行正在存錢。" },
+        { kana: "もうける", kanji: "儲ける", accent: "3", meaning: "賺", example: "彼は店を開いてお金を儲けました。", exampleReading: "かれはみせをひらいておかねをもうけました。", exampleMeaning: "他開店賺了錢。" },
+        { kana: "あてる", kanji: "当てる", accent: "0", meaning: "猜中、命中、使中", example: "クイズの答えを当てました。", exampleReading: "くいずのこたえをあてました。", exampleMeaning: "我猜中了猜謎的答案。" }
+      ];
+
+      const state = { order: [], index: 0, showingBack: false };
+      const cardShell = document.getElementById("cardShell");
+      const frontText = document.getElementById("frontText");
+      const wordReadingText = document.getElementById("wordReadingText");
+      const kanjiText = document.getElementById("kanjiText");
+      const meaningText = document.getElementById("meaningText");
+      const exampleText = document.getElementById("exampleText");
+      const exampleReadingText = document.getElementById("exampleReadingText");
+      const exampleMeaningText = document.getElementById("exampleMeaningText");
+      const counter = document.getElementById("counter");
+      const progress = document.getElementById("progress");
+      const wordList = document.getElementById("wordList");
+
+      function shuffle(array) {
+        const result = [...array];
+        for (let i = result.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [result[i], result[j]] = [result[j], result[i]];
+        }
+        return result;
+      }
+
+      function currentCard() { return cards[state.order[state.index]]; }
+
+      function render() {
+        const card = currentCard();
+        frontText.textContent = card.kana;
+        wordReadingText.textContent = `${card.kana} [${card.accent}]`;
+        kanjiText.textContent = card.kanji;
+        meaningText.textContent = card.meaning;
+        exampleText.textContent = card.example;
+        exampleReadingText.textContent = card.exampleReading;
+        exampleMeaningText.textContent = card.exampleMeaning;
+        counter.textContent = `${state.index + 1} / ${cards.length}`;
+        progress.style.width = `${((state.index + 1) / cards.length) * 100}%`;
+        cardShell.className = `card-shell ${state.showingBack ? "back-only" : "front-only"}`;
+        document.getElementById("flipBtn").textContent = state.showingBack ? "看正面" : "翻面";
+      }
+
+      function renderWordList() {
+        wordList.innerHTML = "";
+        state.order.forEach((cardIndex) => {
+          const card = cards[cardIndex];
+          const item = document.createElement("li");
+          item.textContent = `${card.kana} / ${card.kanji}`;
+          wordList.appendChild(item);
+        });
+      }
+
+      function resetDeck() {
+        state.order = shuffle(cards.map((_, index) => index));
+        state.index = 0;
+        state.showingBack = false;
+        render();
+        renderWordList();
+      }
+
+      function move(delta) {
+        state.index = (state.index + delta + cards.length) % cards.length;
+        state.showingBack = false;
+        render();
+      }
+
+      document.getElementById("flipBtn").addEventListener("click", () => { state.showingBack = !state.showingBack; render(); });
+      document.getElementById("nextBtn").addEventListener("click", () => move(1));
+      document.getElementById("prevBtn").addEventListener("click", () => move(-1));
+      document.getElementById("shuffleBtn").addEventListener("click", resetDeck);
+      document.addEventListener("keydown", (event) => {
+        if (event.key === " ") { event.preventDefault(); state.showingBack = !state.showingBack; render(); }
+        if (event.key === "ArrowRight") move(1);
+        if (event.key === "ArrowLeft") move(-1);
+      });
+      if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
+      resetDeck();
+    </script>
+  </body>
+</html>

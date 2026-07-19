@@ -32,179 +32,40 @@
         letter-spacing: 0;
       }
 
-      main {
-        width: min(880px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 40px 0 28px;
-      }
-
-      header {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
-        gap: 20px;
-        padding-bottom: 22px;
-        border-bottom: 1px solid var(--line);
-      }
-
-      h1 {
-        margin: 0;
-        font-size: clamp(28px, 5vw, 48px);
-        font-weight: 500;
-      }
-
-      .subhead {
-        margin: 8px 0 0;
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      .count {
-        color: var(--muted);
-        font-size: 14px;
-        white-space: nowrap;
-      }
-
-      .study {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 18px;
-        padding: 32px 0 22px;
-      }
-
-      .card-shell {
-        min-height: 340px;
-        border: 1px solid var(--line);
-        background: var(--white);
-        display: grid;
-        place-items: center;
-        padding: 34px;
-      }
-
-      .card {
-        width: 100%;
-        max-width: 620px;
-        text-align: center;
-      }
-
-      .label {
-        color: var(--muted);
-        font-size: 13px;
-        margin-bottom: 18px;
-      }
-
-      .front {
-        font-size: clamp(48px, 12vw, 96px);
-        line-height: 1.1;
-        font-weight: 400;
-      }
-
-      .word-reading {
-        color: var(--muted);
-        font-size: 16px;
-        margin-bottom: 10px;
-      }
-
-      .kanji {
-        font-size: clamp(34px, 8vw, 64px);
-        line-height: 1.15;
-        font-weight: 500;
-        margin-bottom: 14px;
-      }
-
-      .meaning {
-        color: var(--accent);
-        font-size: 20px;
-        margin-bottom: 22px;
-      }
-
-      .example {
-        width: min(100%, 560px);
-        margin: 0 auto;
-        padding-top: 20px;
-        border-top: 1px solid var(--line);
-        font-size: 20px;
-        line-height: 1.7;
-      }
-
-      .example-reading,
-      .example-meaning {
-        width: min(100%, 560px);
-        margin: 8px auto 0;
-        font-size: 16px;
-        line-height: 1.7;
-      }
-
+      main { width: min(880px, calc(100% - 32px)); margin: 0 auto; padding: 40px 0 28px; }
+      header { display: flex; align-items: end; justify-content: space-between; gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+      h1 { margin: 0; font-size: clamp(28px, 5vw, 48px); font-weight: 500; }
+      .subhead { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
+      .count { color: var(--muted); font-size: 14px; white-space: nowrap; }
+      .study { display: grid; grid-template-columns: 1fr; gap: 18px; padding: 32px 0 22px; }
+      .card-shell { position: relative; min-height: 340px; border: 1px solid var(--line); background: var(--white); display: grid; place-items: center; padding: 34px; }
+      .card { width: 100%; max-width: 620px; text-align: center; }
+      .copy-tools { position: absolute; top: 8px; right: 8px; display: flex; align-items: center; gap: 4px; }
+      .copy-status { color: var(--muted); font-size: 13px; opacity: 0; pointer-events: none; transition: opacity 120ms ease; white-space: nowrap; }
+      .copy-status.show { opacity: 1; }
+      .copy-btn { width: 40px; height: 40px; min-height: 40px; padding: 0; display: grid; place-items: center; font-size: 22px; line-height: 1; }
+      .label { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+      .front { font-size: clamp(48px, 12vw, 96px); line-height: 1.1; font-weight: 400; }
+      .word-reading { color: var(--muted); font-size: 16px; margin-bottom: 10px; }
+      .kanji { font-size: clamp(34px, 8vw, 64px); line-height: 1.15; font-weight: 500; margin-bottom: 14px; }
+      .meaning { color: var(--accent); font-size: 20px; margin-bottom: 22px; }
+      .example { width: min(100%, 560px); margin: 0 auto; padding-top: 20px; border-top: 1px solid var(--line); font-size: 20px; line-height: 1.7; }
+      .example-reading, .example-meaning { width: min(100%, 560px); margin: 8px auto 0; font-size: 16px; line-height: 1.7; }
       .example-reading { color: var(--muted); }
       .example-meaning { color: var(--ink); }
-
-      .controls {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
-      }
-
-      button {
-        min-height: 46px;
-        border: 1px solid var(--line);
-        background: var(--white);
-        color: var(--ink);
-        font: inherit;
-        cursor: pointer;
-      }
-
+      .controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+      button { min-height: 46px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font: inherit; cursor: pointer; }
       button:hover { background: var(--soft); }
       button:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 2px; }
-
-      .primary {
-        background: var(--ink);
-        border-color: var(--ink);
-        color: var(--white);
-      }
-
+      .primary { background: var(--ink); border-color: var(--ink); color: var(--white); }
       .primary:hover { background: #1f1d1a; }
-
-      .progress-wrap {
-        height: 4px;
-        background: var(--soft);
-      }
-
-      .progress {
-        width: 0%;
-        height: 100%;
-        background: var(--accent);
-        transition: width 160ms ease;
-      }
-
-      details {
-        border-top: 1px solid var(--line);
-        padding-top: 18px;
-      }
-
-      summary {
-        cursor: pointer;
-        color: var(--muted);
-        margin-bottom: 14px;
-      }
-
-      .list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 8px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .list li {
-        border: 1px solid var(--line);
-        background: rgba(255, 253, 248, 0.68);
-        padding: 10px 12px;
-        font-size: 14px;
-      }
-
-      .front-only .back-content,
-      .back-only .front-content { display: none; }
+      .progress-wrap { height: 4px; background: var(--soft); }
+      .progress { width: 0%; height: 100%; background: var(--accent); transition: width 160ms ease; }
+      details { border-top: 1px solid var(--line); padding-top: 18px; }
+      summary { cursor: pointer; color: var(--muted); margin-bottom: 14px; }
+      .list { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+      .list li { border: 1px solid var(--line); background: rgba(255, 253, 248, 0.68); padding: 10px 12px; font-size: 14px; }
+      .front-only .back-content, .back-only .front-content { display: none; }
 
       @media (max-width: 640px) {
         main { width: min(100% - 22px, 880px); padding-top: 24px; }
@@ -229,11 +90,9 @@
       <section class="study" aria-label="單字卡練習">
         <div class="progress-wrap" aria-hidden="true"><div class="progress" id="progress"></div></div>
         <div class="card-shell front-only" id="cardShell">
+          <div class="copy-tools"><span class="copy-status" id="copyStatus">Copy Success</span><button type="button" class="copy-btn" id="copyBtn" aria-label="Copy word" title="Copy word">⧉</button></div>
           <article class="card" aria-live="polite">
-            <div class="front-content">
-              <div class="label">正面</div>
-              <div class="front" id="frontText"></div>
-            </div>
+            <div class="front-content"><div class="label">正面</div><div class="front" id="frontText"></div></div>
             <div class="back-content">
               <div class="label">背面</div>
               <div class="word-reading" id="wordReadingText"></div>
@@ -245,18 +104,9 @@
             </div>
           </article>
         </div>
-        <div class="controls">
-          <button type="button" id="prevBtn">上一張</button>
-          <button type="button" class="primary" id="flipBtn">翻面</button>
-          <button type="button" id="nextBtn">下一張</button>
-          <button type="button" id="shuffleBtn">重新洗牌</button>
-        </div>
+        <div class="controls"><button type="button" id="prevBtn">上一張</button><button type="button" class="primary" id="flipBtn">翻面</button><button type="button" id="nextBtn">下一張</button><button type="button" id="shuffleBtn">重新洗牌</button></div>
       </section>
-
-      <details>
-        <summary>查看本輪單字</summary>
-        <ul class="list" id="wordList"></ul>
-      </details>
+      <details><summary>查看本輪單字</summary><ul class="list" id="wordList"></ul></details>
     </main>
 
     <script>
@@ -327,9 +177,12 @@
       const exampleText = document.getElementById("exampleText");
       const exampleReadingText = document.getElementById("exampleReadingText");
       const exampleMeaningText = document.getElementById("exampleMeaningText");
+      const copyBtn = document.getElementById("copyBtn");
+      const copyStatus = document.getElementById("copyStatus");
       const counter = document.getElementById("counter");
       const progress = document.getElementById("progress");
       const wordList = document.getElementById("wordList");
+      let copyTimer;
 
       function shuffle(array) {
         const result = [...array];
@@ -339,9 +192,7 @@
         }
         return result;
       }
-
       function currentCard() { return cards[state.order[state.index]]; }
-
       function render() {
         const card = currentCard();
         frontText.textContent = card.kana;
@@ -356,7 +207,6 @@
         cardShell.className = `card-shell ${state.showingBack ? "back-only" : "front-only"}`;
         document.getElementById("flipBtn").textContent = state.showingBack ? "看正面" : "翻面";
       }
-
       function renderWordList() {
         wordList.innerHTML = "";
         state.order.forEach((cardIndex) => {
@@ -366,7 +216,6 @@
           wordList.appendChild(item);
         });
       }
-
       function resetDeck() {
         state.order = shuffle(cards.map((_, index) => index));
         state.index = 0;
@@ -374,14 +223,32 @@
         render();
         renderWordList();
       }
-
       function move(delta) {
         state.index = (state.index + delta + cards.length) % cards.length;
         state.showingBack = false;
         render();
       }
-
+      async function copyCurrentWord() {
+        const card = currentCard();
+        const text = `${card.kanji}（${card.kana}）`;
+        try { await navigator.clipboard.writeText(text); }
+        catch {
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          textarea.remove();
+        }
+        copyStatus.classList.add("show");
+        clearTimeout(copyTimer);
+        copyTimer = setTimeout(() => copyStatus.classList.remove("show"), 1000);
+      }
       document.getElementById("flipBtn").addEventListener("click", () => { state.showingBack = !state.showingBack; render(); });
+      copyBtn.addEventListener("click", copyCurrentWord);
       document.getElementById("nextBtn").addEventListener("click", () => move(1));
       document.getElementById("prevBtn").addEventListener("click", () => move(-1));
       document.getElementById("shuffleBtn").addEventListener("click", resetDeck);

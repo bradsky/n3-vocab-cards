@@ -1,4 +1,4 @@
-const CACHE_NAME = "n3-vocab-cards-round2-v1";
+const CACHE_NAME = "n3-vocab-cards-round2-v2";
 const ASSETS = [
   "./",
   "./index.html",

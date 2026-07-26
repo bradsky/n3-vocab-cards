@@ -2,7 +2,8 @@ const CACHE_NAME = "n3-vocab-cards-round3-v1";
 const ASSETS = [
   "./",
   "./index.html",
-  "./manifest.json"
+  "./manifest.json",
+  "./cards.json"
 ];
 
 self.addEventListener("install", (event) => {

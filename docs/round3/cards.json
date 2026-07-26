@@ -1,0 +1,552 @@
+[
+  {
+    "kana": "びじん",
+    "kanji": "美人",
+    "accent": "1",
+    "meaning": "美人",
+    "pos": "N",
+    "example": "田中さんのお姉さんは美人です。",
+    "exampleReading": "たなかさんのおねえさんはびじんです。",
+    "exampleMeaning": "田中先生的姊姊是美人。"
+  },
+  {
+    "kana": "いけめん",
+    "kanji": "イケメン",
+    "accent": "0",
+    "meaning": "帥哥",
+    "pos": "N",
+    "example": "彼はクラスでイケメンだと言われています。",
+    "exampleReading": "かれはくらすでいけめんだといわれています。",
+    "exampleMeaning": "他在班上被說是帥哥。"
+  },
+  {
+    "kana": "におい",
+    "kanji": "におい",
+    "accent": "2",
+    "meaning": "味道",
+    "pos": "N",
+    "example": "台所からいいにおいがします。",
+    "exampleReading": "だいどころからいいにおいがします。",
+    "exampleMeaning": "廚房傳來好聞的味道。"
+  },
+  {
+    "kana": "かおり",
+    "kanji": "香り",
+    "accent": "0",
+    "meaning": "香味",
+    "pos": "N",
+    "example": "この花は甘い香りがします。",
+    "exampleReading": "このはなはあまいかおりがします。",
+    "exampleMeaning": "這朵花有甜甜的香味。"
+  },
+  {
+    "kana": "めじるし",
+    "kanji": "目印",
+    "accent": "2",
+    "meaning": "記號、標記",
+    "pos": "N",
+    "example": "駅の前の時計を目印にしてください。",
+    "exampleReading": "えきのまえのとけいをめじるしにしてください。",
+    "exampleMeaning": "請把車站前的時鐘當作標記。"
+  },
+  {
+    "kana": "しるし",
+    "kanji": "印",
+    "accent": "0",
+    "meaning": "記號、標誌",
+    "pos": "N",
+    "example": "大切なところに赤い印をつけました。",
+    "exampleReading": "たいせつなところにあかいしるしをつけました。",
+    "exampleMeaning": "我在重要的地方做了紅色記號。"
+  },
+  {
+    "kana": "しゅるい",
+    "kanji": "種類",
+    "accent": "1",
+    "meaning": "種類",
+    "pos": "N",
+    "example": "この店には多くの種類のお茶があります。",
+    "exampleReading": "このみせにはおおくのしゅるいのおちゃがあります。",
+    "exampleMeaning": "這家店有很多種類的茶。"
+  },
+  {
+    "kana": "じゃんる",
+    "kanji": "ジャンル",
+    "accent": "1",
+    "meaning": "類別、類型",
+    "pos": "N",
+    "example": "好きな音楽のジャンルは何ですか。",
+    "exampleReading": "すきなおんがくのじゃんるはなんですか。",
+    "exampleMeaning": "你喜歡的音樂類型是什麼？"
+  },
+  {
+    "kana": "へんしん",
+    "kanji": "返信する",
+    "accent": "0",
+    "meaning": "回信、回覆",
+    "pos": "V",
+    "example": "メールにすぐ返信しました。",
+    "exampleReading": "めーるにすぐへんしんしました。",
+    "exampleMeaning": "我馬上回覆了郵件。"
+  },
+  {
+    "kana": "じゅしん",
+    "kanji": "受信する",
+    "accent": "0",
+    "meaning": "收信、接收",
+    "pos": "V",
+    "example": "新しいメッセージを受信しました。",
+    "exampleReading": "あたらしいめっせーじをじゅしんしました。",
+    "exampleMeaning": "我接收到了新的訊息。"
+  },
+  {
+    "kana": "そうしん",
+    "kanji": "送信する",
+    "accent": "0",
+    "meaning": "發信、傳送",
+    "pos": "V",
+    "example": "資料を先生に送信しました。",
+    "exampleReading": "しりょうをせんせいにそうしんしました。",
+    "exampleMeaning": "我把資料傳送給老師了。"
+  },
+  {
+    "kana": "てんぷ",
+    "kanji": "添付する",
+    "accent": "1",
+    "meaning": "附加、附件",
+    "pos": "V",
+    "example": "メールに写真を添付してください。",
+    "exampleReading": "めーるにしゃしんをてんぷしてください。",
+    "exampleMeaning": "請在郵件裡附上照片。"
+  },
+  {
+    "kana": "そうにゅう",
+    "kanji": "挿入する",
+    "accent": "0",
+    "meaning": "插入",
+    "pos": "V",
+    "example": "文章の中に図を挿入しました。",
+    "exampleReading": "ぶんしょうのなかにずをそうにゅうしました。",
+    "exampleMeaning": "我在文章中插入了圖。"
+  },
+  {
+    "kana": "ほぞん",
+    "kanji": "保存する",
+    "accent": "0",
+    "meaning": "保存、儲存",
+    "pos": "V",
+    "example": "作ったファイルを保存しました。",
+    "exampleReading": "つくったふぁいるをほぞんしました。",
+    "exampleMeaning": "我儲存了做好的檔案。"
+  },
+  {
+    "kana": "さくじょ",
+    "kanji": "削除する",
+    "accent": "1",
+    "meaning": "刪除",
+    "pos": "V",
+    "example": "いらない写真を削除しました。",
+    "exampleReading": "いらないしゃしんをさくじょしました。",
+    "exampleMeaning": "我刪除了不需要的照片。"
+  },
+  {
+    "kana": "しんきさくせい",
+    "kanji": "新規作成する",
+    "accent": "4",
+    "meaning": "新建",
+    "pos": "V",
+    "example": "新しいページを新規作成しました。",
+    "exampleReading": "あたらしいぺーじをしんきさくせいしました。",
+    "exampleMeaning": "我新建了一個頁面。"
+  },
+  {
+    "kana": "へんこう",
+    "kanji": "変更する",
+    "accent": "0",
+    "meaning": "變更",
+    "pos": "V",
+    "example": "予約の時間を変更しました。",
+    "exampleReading": "よやくのじかんをへんこうしました。",
+    "exampleMeaning": "我變更了預約時間。"
+  },
+  {
+    "kana": "かんりょう",
+    "kanji": "完了する",
+    "accent": "0",
+    "meaning": "完成",
+    "pos": "V",
+    "example": "登録の手続きが完了しました。",
+    "exampleReading": "とうろくのてつづきがかんりょうしました。",
+    "exampleMeaning": "註冊手續完成了。"
+  },
+  {
+    "kana": "くりっく",
+    "kanji": "クリックする",
+    "accent": "2",
+    "meaning": "點擊",
+    "pos": "V",
+    "example": "このボタンをクリックしてください。",
+    "exampleReading": "このぼたんをくりっくしてください。",
+    "exampleMeaning": "請點擊這個按鈕。"
+  },
+  {
+    "kana": "だうんろーど",
+    "kanji": "ダウンロードする",
+    "accent": "4",
+    "meaning": "下載",
+    "pos": "V",
+    "example": "アプリをスマホにダウンロードしました。",
+    "exampleReading": "あぷりをすまほにだうんろーどしました。",
+    "exampleMeaning": "我把 App 下載到手機裡了。"
+  },
+  {
+    "kana": "あっぷろーど",
+    "kanji": "アップロードする",
+    "accent": "4",
+    "meaning": "上傳",
+    "pos": "V",
+    "example": "動画をサイトにアップロードしました。",
+    "exampleReading": "どうがをさいとにあっぷろーどしました。",
+    "exampleMeaning": "我把影片上傳到網站了。"
+  },
+  {
+    "kana": "いんすとーる",
+    "kanji": "インストールする",
+    "accent": "4",
+    "meaning": "安裝",
+    "pos": "V",
+    "example": "新しいソフトをインストールしました。",
+    "exampleReading": "あたらしいそふとをいんすとーるしました。",
+    "exampleMeaning": "我安裝了新的軟體。"
+  },
+  {
+    "kana": "つうち",
+    "kanji": "通知する",
+    "accent": "0",
+    "meaning": "通知",
+    "pos": "V",
+    "example": "結果をメールで通知します。",
+    "exampleReading": "けっかをめーるでつうちします。",
+    "exampleMeaning": "會用郵件通知結果。"
+  },
+  {
+    "kana": "はつばい",
+    "kanji": "発売する",
+    "accent": "0",
+    "meaning": "發售",
+    "pos": "V",
+    "example": "新しい本は来月発売されます。",
+    "exampleReading": "あたらしいほんはらいげつはつばいされます。",
+    "exampleMeaning": "新書下個月發售。"
+  },
+  {
+    "kana": "はんばい",
+    "kanji": "販売する",
+    "accent": "0",
+    "meaning": "販賣",
+    "pos": "V",
+    "example": "この店では手作りのパンを販売しています。",
+    "exampleReading": "このみせではてづくりのぱんをはんばいしています。",
+    "exampleMeaning": "這家店販賣手作麵包。"
+  },
+  {
+    "kana": "しゅっぴん",
+    "kanji": "出品する",
+    "accent": "0",
+    "meaning": "展出商品、上架作品",
+    "pos": "V",
+    "example": "使わないかばんをネットに出品しました。",
+    "exampleReading": "つかわないかばんをねっとにしゅっぴんしました。",
+    "exampleMeaning": "我把不用的包包放到網路上架了。"
+  },
+  {
+    "kana": "けいたい",
+    "kanji": "携帯する",
+    "accent": "0",
+    "meaning": "攜帶",
+    "pos": "V",
+    "example": "旅行中はパスポートを携帯してください。",
+    "exampleReading": "りょこうちゅうはぱすぽーとをけいたいしてください。",
+    "exampleMeaning": "旅行中請攜帶護照。"
+  },
+  {
+    "kana": "たいそう",
+    "kanji": "体操する",
+    "accent": "0",
+    "meaning": "體操",
+    "pos": "V",
+    "example": "朝、家族と一緒に体操します。",
+    "exampleReading": "あさ、かぞくといっしょにたいそうします。",
+    "exampleMeaning": "早上和家人一起做體操。"
+  },
+  {
+    "kana": "とれーにんぐ",
+    "kanji": "トレーニングする",
+    "accent": "2",
+    "meaning": "訓練",
+    "pos": "V",
+    "example": "毎日ジムでトレーニングしています。",
+    "exampleReading": "まいにちじむでとれーにんぐしています。",
+    "exampleMeaning": "我每天在健身房訓練。"
+  },
+  {
+    "kana": "きんとれ",
+    "kanji": "筋トレする",
+    "accent": "0",
+    "meaning": "肌肉訓練",
+    "pos": "V",
+    "example": "健康のために筋トレを始めました。",
+    "exampleReading": "けんこうのためにきんとれをはじめました。",
+    "exampleMeaning": "我為了健康開始做肌力訓練。"
+  },
+  {
+    "kana": "しだいに",
+    "kanji": "次第に",
+    "accent": "0",
+    "meaning": "逐漸",
+    "pos": "Adv",
+    "example": "空が次第に暗くなってきました。",
+    "exampleReading": "そらがしだいにくらくなってきました。",
+    "exampleMeaning": "天空漸漸變暗了。"
+  },
+  {
+    "kana": "じょじょに",
+    "kanji": "徐々に",
+    "accent": "1",
+    "meaning": "慢慢地",
+    "pos": "Adv",
+    "example": "日本語が徐々にわかるようになりました。",
+    "exampleReading": "にほんごがじょじょにわかるようになりました。",
+    "exampleMeaning": "我逐漸能聽懂日文了。"
+  },
+  {
+    "kana": "ますます",
+    "kanji": "ますます",
+    "accent": "2",
+    "meaning": "越來越",
+    "pos": "Adv",
+    "example": "日本語の勉強がますます楽しくなりました。",
+    "exampleReading": "にほんごのべんきょうがますますたのしくなりました。",
+    "exampleMeaning": "日文學習變得越來越有趣了。"
+  },
+  {
+    "kana": "すっかり",
+    "kanji": "すっかり",
+    "accent": "3",
+    "meaning": "完全",
+    "pos": "Adv",
+    "example": "宿題のことをすっかり忘れていました。",
+    "exampleReading": "しゅくだいのことをすっかりわすれていました。",
+    "exampleMeaning": "我完全忘記作業的事了。"
+  },
+  {
+    "kana": "とっくに",
+    "kanji": "とっくに",
+    "accent": "3",
+    "meaning": "早就、早已",
+    "pos": "Adv",
+    "example": "彼はとっくに帰りました。",
+    "exampleReading": "かれはとっくにかえりました。",
+    "exampleMeaning": "他早就回去了。"
+  },
+  {
+    "kana": "いっきに",
+    "kanji": "一気に",
+    "accent": "1",
+    "meaning": "一口氣",
+    "pos": "Adv",
+    "example": "水を一気に飲みました。",
+    "exampleReading": "みずをいっきにのみました。",
+    "exampleMeaning": "我一口氣喝了水。"
+  },
+  {
+    "kana": "いちどに",
+    "kanji": "一度に",
+    "accent": "3",
+    "meaning": "同時、一次",
+    "pos": "Adv",
+    "example": "一度にたくさん覚えるのは大変です。",
+    "exampleReading": "いちどにたくさんおぼえるのはたいへんです。",
+    "exampleMeaning": "一次記很多很辛苦。"
+  },
+  {
+    "kana": "いっぺんに",
+    "kanji": "いっぺんに",
+    "accent": "3",
+    "meaning": "一下子、一次全部",
+    "pos": "Adv",
+    "example": "仕事がいっぺんに増えました。",
+    "exampleReading": "しごとがいっぺんにふえました。",
+    "exampleMeaning": "工作一下子增加了。"
+  },
+  {
+    "kana": "いつのまにか",
+    "kanji": "いつの間にか",
+    "accent": "0",
+    "meaning": "不知不覺",
+    "pos": "Adv",
+    "example": "いつの間にか外が明るくなっていました。",
+    "exampleReading": "いつのまにかそとがあかるくなっていました。",
+    "exampleMeaning": "不知不覺外面已經亮了。"
+  },
+  {
+    "kana": "たつ",
+    "kanji": "経つ",
+    "accent": "1",
+    "meaning": "經過",
+    "pos": "V",
+    "example": "日本に来てから三年が経ちました。",
+    "exampleReading": "にほんにきてからさんねんがたちました。",
+    "exampleMeaning": "來日本之後已經過了三年。"
+  },
+  {
+    "kana": "におう",
+    "kanji": "臭う／匂う",
+    "accent": "2",
+    "meaning": "有味道",
+    "pos": "V",
+    "example": "この料理はとてもおいしそうに匂います。",
+    "exampleReading": "このりょうりはとてもおいしそうににおいます。",
+    "exampleMeaning": "這道料理聞起來很好吃。"
+  },
+  {
+    "kana": "さます",
+    "kanji": "覚ます",
+    "accent": "2",
+    "meaning": "叫醒、弄醒",
+    "pos": "V",
+    "example": "冷たい水で目を覚ましました。",
+    "exampleReading": "つめたいみずでめをさましました。",
+    "exampleMeaning": "我用冷水讓自己清醒。"
+  },
+  {
+    "kana": "でんわがかかる",
+    "kanji": "（電話が）かかる",
+    "accent": "0",
+    "meaning": "電話打來",
+    "pos": "V",
+    "example": "夜中に友達から電話がかかりました。",
+    "exampleReading": "よなかにともだちからでんわがかかりました。",
+    "exampleMeaning": "半夜朋友打電話來了。"
+  },
+  {
+    "kana": "うけとる",
+    "kanji": "受け取る",
+    "accent": "0",
+    "meaning": "收、領取",
+    "pos": "V",
+    "example": "受付で資料を受け取りました。",
+    "exampleReading": "うけつけでしりょうをうけとりました。",
+    "exampleMeaning": "我在櫃台領取了資料。"
+  },
+  {
+    "kana": "くばる",
+    "kanji": "配る",
+    "accent": "2",
+    "meaning": "發、分發",
+    "pos": "V",
+    "example": "先生はプリントを学生に配りました。",
+    "exampleReading": "せんせいはぷりんとをがくせいにくばりました。",
+    "exampleMeaning": "老師把講義發給學生。"
+  },
+  {
+    "kana": "ことなる",
+    "kanji": "異なる",
+    "accent": "3",
+    "meaning": "不一樣",
+    "pos": "V",
+    "example": "国によって文化が異なります。",
+    "exampleReading": "くにによってぶんかがことなります。",
+    "exampleMeaning": "文化會依國家而不同。"
+  },
+  {
+    "kana": "ちらかる",
+    "kanji": "散らかる",
+    "accent": "0",
+    "meaning": "散亂",
+    "pos": "V",
+    "example": "部屋が本で散らかっています。",
+    "exampleReading": "へやがほんでちらかっています。",
+    "exampleMeaning": "房間因為書而很亂。"
+  },
+  {
+    "kana": "ちらかす",
+    "kanji": "散らかす",
+    "accent": "0",
+    "meaning": "弄亂",
+    "pos": "V",
+    "example": "子供がおもちゃを散らかしました。",
+    "exampleReading": "こどもがおもちゃをちらかしました。",
+    "exampleMeaning": "孩子把玩具弄亂了。"
+  },
+  {
+    "kana": "くすりがきく",
+    "kanji": "（薬が）効く",
+    "accent": "0",
+    "meaning": "有效",
+    "pos": "V",
+    "example": "この薬はよく効きます。",
+    "exampleReading": "このくすりはよくききます。",
+    "exampleMeaning": "這個藥很有效。"
+  },
+  {
+    "kana": "さめる",
+    "kanji": "覚める",
+    "accent": "2",
+    "meaning": "醒來",
+    "pos": "V",
+    "example": "朝早く目が覚めました。",
+    "exampleReading": "あさはやくめがさめました。",
+    "exampleMeaning": "早上很早就醒了。"
+  },
+  {
+    "kana": "でんわをかける",
+    "kanji": "（電話を）かける",
+    "accent": "0",
+    "meaning": "打電話",
+    "pos": "V",
+    "example": "母に電話をかけました。",
+    "exampleReading": "ははにでんわをかけました。",
+    "exampleMeaning": "我打電話給媽媽。"
+  },
+  {
+    "kana": "そろえる",
+    "kanji": "そろえる",
+    "accent": "3",
+    "meaning": "湊齊、整理整齊",
+    "pos": "V",
+    "example": "机の上の本をそろえました。",
+    "exampleReading": "つくえのうえのほんをそろえました。",
+    "exampleMeaning": "我把桌上的書整理整齊了。"
+  },
+  {
+    "kana": "わける",
+    "kanji": "分ける",
+    "accent": "2",
+    "meaning": "分開、分配",
+    "pos": "V",
+    "example": "ケーキを四つに分けました。",
+    "exampleReading": "けーきをよっつにわけました。",
+    "exampleMeaning": "我把蛋糕分成四份。"
+  },
+  {
+    "kana": "しるしをつける",
+    "kanji": "（印を）つける",
+    "accent": "0",
+    "meaning": "做記號",
+    "pos": "V",
+    "example": "大事な文に印をつけました。",
+    "exampleReading": "だいじなぶんにしるしをつけました。",
+    "exampleMeaning": "我在重要句子上做了記號。"
+  },
+  {
+    "kana": "ひかえる",
+    "kanji": "控える",
+    "accent": "3",
+    "meaning": "控制、限制",
+    "pos": "V",
+    "example": "健康のために甘い物を控えています。",
+    "exampleReading": "けんこうのためにあまいものをひかえています。",
+    "exampleMeaning": "我為了健康控制甜食。"
+  }
+]

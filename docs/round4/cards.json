@@ -1,0 +1,542 @@
+[
+  {
+    "kana": "ないか",
+    "kanji": "内科",
+    "accent": "0",
+    "meaning": "內科",
+    "pos": "N",
+    "example": "風邪をひいたので内科へ行きました。",
+    "exampleReading": "かぜをひいたのでないかへいきました。",
+    "exampleMeaning": "因為感冒了，所以去了內科。"
+  },
+  {
+    "kana": "げか",
+    "kanji": "外科",
+    "accent": "1",
+    "meaning": "外科",
+    "pos": "N",
+    "example": "けがをした時は外科で診てもらいます。",
+    "exampleReading": "けがをしたときはげかでみてもらいます。",
+    "exampleMeaning": "受傷時會去外科看診。"
+  },
+  {
+    "kana": "しょうにか",
+    "kanji": "小児科",
+    "accent": "0",
+    "meaning": "小兒科",
+    "pos": "N",
+    "example": "子供の熱が下がらないので小児科へ行きました。",
+    "exampleReading": "こどものねつがさがらないのでしょうにかへいきました。",
+    "exampleMeaning": "因為孩子退不了燒，所以去了小兒科。"
+  },
+  {
+    "kana": "じびか",
+    "kanji": "耳鼻科",
+    "accent": "0",
+    "meaning": "耳鼻喉科",
+    "pos": "N",
+    "example": "花粉症で耳鼻科に通っています。",
+    "exampleReading": "かふんしょうでじびかにかよっています。",
+    "exampleMeaning": "因為花粉症，我定期去耳鼻喉科。"
+  },
+  {
+    "kana": "しか",
+    "kanji": "歯科",
+    "accent": "1",
+    "meaning": "牙科",
+    "pos": "N",
+    "example": "虫歯が痛いので歯科を予約しました。",
+    "exampleReading": "むしばがいたいのでしかをよやくしました。",
+    "exampleMeaning": "因為蛀牙很痛，所以預約了牙科。"
+  },
+  {
+    "kana": "がんか",
+    "kanji": "眼科",
+    "accent": "1",
+    "meaning": "眼科",
+    "pos": "N",
+    "example": "目が赤いので眼科で検査を受けました。",
+    "exampleReading": "めがあかいのでがんかでけんさをうけました。",
+    "exampleMeaning": "因為眼睛紅，所以在眼科接受檢查。"
+  },
+  {
+    "kana": "ひふか",
+    "kanji": "皮膚科",
+    "accent": "0",
+    "meaning": "皮膚科",
+    "pos": "N",
+    "example": "肌がかゆくて皮膚科へ行きました。",
+    "exampleReading": "はだがかゆくてひふかへいきました。",
+    "exampleMeaning": "因為皮膚很癢，所以去了皮膚科。"
+  },
+  {
+    "kana": "さんふじんか",
+    "kanji": "産婦人科",
+    "accent": "0",
+    "meaning": "婦產科",
+    "pos": "N",
+    "example": "姉は産婦人科で働いています。",
+    "exampleReading": "あねはさんふじんかではたらいています。",
+    "exampleMeaning": "姊姊在婦產科工作。"
+  },
+  {
+    "kana": "せいけいげか",
+    "kanji": "整形外科",
+    "accent": "5",
+    "meaning": "整形外科、骨科",
+    "pos": "N",
+    "example": "ひざが痛くて整形外科で診てもらいました。",
+    "exampleReading": "ひざがいたくてせいけいげかでみてもらいました。",
+    "exampleMeaning": "因為膝蓋痛，所以去了整形外科看診。"
+  },
+  {
+    "kana": "すいぞくかん",
+    "kanji": "水族館",
+    "accent": "4",
+    "meaning": "水族館",
+    "pos": "N",
+    "example": "週末に家族と水族館へ行きました。",
+    "exampleReading": "しゅうまつにかぞくとすいぞくかんへいきました。",
+    "exampleMeaning": "週末和家人去了水族館。"
+  },
+  {
+    "kana": "はくぶつかん",
+    "kanji": "博物館",
+    "accent": "4",
+    "meaning": "博物館",
+    "pos": "N",
+    "example": "博物館で昔の道具を見ました。",
+    "exampleReading": "はくぶつかんでむかしのどうぐをみました。",
+    "exampleMeaning": "在博物館看了以前的工具。"
+  },
+  {
+    "kana": "りょかん",
+    "kanji": "旅館",
+    "accent": "0",
+    "meaning": "旅館、日式旅館",
+    "pos": "N",
+    "example": "温泉のある旅館に泊まりたいです。",
+    "exampleReading": "おんせんのあるりょかんにとまりたいです。",
+    "exampleMeaning": "我想住有溫泉的日式旅館。"
+  },
+  {
+    "kana": "たいしかん",
+    "kanji": "大使館",
+    "accent": "3",
+    "meaning": "大使館",
+    "pos": "N",
+    "example": "ビザのために大使館へ行きました。",
+    "exampleReading": "びざのためにたいしかんへいきました。",
+    "exampleMeaning": "為了簽證去了大使館。"
+  },
+  {
+    "kana": "しんぶんしゃ",
+    "kanji": "新聞社",
+    "accent": "3",
+    "meaning": "報社",
+    "pos": "N",
+    "example": "彼は新聞社で記者として働いています。",
+    "exampleReading": "かれはしんぶんしゃできしゃとしてはたらいています。",
+    "exampleMeaning": "他在報社擔任記者。"
+  },
+  {
+    "kana": "てれびきょく",
+    "kanji": "テレビ局",
+    "accent": "3",
+    "meaning": "電視台",
+    "pos": "N",
+    "example": "テレビ局の前で有名な俳優を見ました。",
+    "exampleReading": "てれびきょくのまえでゆうめいなはいゆうをみました。",
+    "exampleMeaning": "在電視台前看到了有名的演員。"
+  },
+  {
+    "kana": "こうそうびる",
+    "kanji": "高層ビル",
+    "accent": "5",
+    "meaning": "高樓大廈",
+    "pos": "N",
+    "example": "駅前に新しい高層ビルが建ちました。",
+    "exampleReading": "えきまえにあたらしいこうそうびるがたちました。",
+    "exampleMeaning": "車站前蓋了新的高樓大廈。"
+  },
+  {
+    "kana": "たわー",
+    "kanji": "タワー",
+    "accent": "1",
+    "meaning": "塔",
+    "pos": "N",
+    "example": "夜のタワーはとてもきれいです。",
+    "exampleReading": "よるのたわーはとてもきれいです。",
+    "exampleMeaning": "夜晚的塔非常漂亮。"
+  },
+  {
+    "kana": "しょうてんがい",
+    "kanji": "商店街",
+    "accent": "3",
+    "meaning": "商店街",
+    "pos": "N",
+    "example": "商店街で夕飯の材料を買いました。",
+    "exampleReading": "しょうてんがいでゆうはんのざいりょうをかいました。",
+    "exampleMeaning": "在商店街買了晚餐的材料。"
+  },
+  {
+    "kana": "ろうじんほーむ",
+    "kanji": "老人ホーム",
+    "accent": "5",
+    "meaning": "養老院",
+    "pos": "N",
+    "example": "祖母は老人ホームで元気に暮らしています。",
+    "exampleReading": "そぼはろうじんほーむでげんきにくらしています。",
+    "exampleMeaning": "祖母在養老院健康地生活。"
+  },
+  {
+    "kana": "みなと",
+    "kanji": "港",
+    "accent": "0",
+    "meaning": "港口",
+    "pos": "N",
+    "example": "港に大きな船が止まっています。",
+    "exampleReading": "みなとにおおきなふねがとまっています。",
+    "exampleMeaning": "港口停著一艘大船。"
+  },
+  {
+    "kana": "ひろば",
+    "kanji": "広場",
+    "accent": "1",
+    "meaning": "廣場",
+    "pos": "N",
+    "example": "駅前の広場で友達と待ち合わせました。",
+    "exampleReading": "えきまえのひろばでともだちとまちあわせました。",
+    "exampleMeaning": "在車站前的廣場和朋友碰面。"
+  },
+  {
+    "kana": "あきち",
+    "kanji": "空き地",
+    "accent": "0",
+    "meaning": "空地",
+    "pos": "N",
+    "example": "家の近くの空き地で子供たちが遊んでいます。",
+    "exampleReading": "いえのちかくのあきちでこどもたちがあそんでいます。",
+    "exampleMeaning": "孩子們在家附近的空地玩。"
+  },
+  {
+    "kana": "かんこうち",
+    "kanji": "観光地",
+    "accent": "3",
+    "meaning": "觀光地",
+    "pos": "N",
+    "example": "京都は有名な観光地です。",
+    "exampleReading": "きょうとはゆうめいなかんこうちです。",
+    "exampleMeaning": "京都是有名的觀光地。"
+  },
+  {
+    "kana": "きじ",
+    "kanji": "記事",
+    "accent": "1",
+    "meaning": "新聞、文章的記事",
+    "pos": "N",
+    "example": "新聞でその事件の記事を読みました。",
+    "exampleReading": "しんぶんでそのじけんのきじをよみました。",
+    "exampleMeaning": "在報紙上讀了那起事件的報導。"
+  },
+  {
+    "kana": "しらせ",
+    "kanji": "知らせ",
+    "accent": "0",
+    "meaning": "通知、消息",
+    "pos": "N",
+    "example": "学校から大切な知らせが来ました。",
+    "exampleReading": "がっこうからたいせつなしらせがきました。",
+    "exampleMeaning": "學校傳來了重要通知。"
+  },
+  {
+    "kana": "じけん",
+    "kanji": "事件",
+    "accent": "1",
+    "meaning": "事件",
+    "pos": "N",
+    "example": "その事件についてニュースで知りました。",
+    "exampleReading": "そのじけんについてにゅーすでしりました。",
+    "exampleMeaning": "我從新聞知道了那起事件。"
+  },
+  {
+    "kana": "じこ",
+    "kanji": "事故",
+    "accent": "1",
+    "meaning": "事故",
+    "pos": "N",
+    "example": "駅の近くで交通事故がありました。",
+    "exampleReading": "えきのちかくでこうつうじこがありました。",
+    "exampleMeaning": "車站附近發生了交通事故。"
+  },
+  {
+    "kana": "うわさ",
+    "kanji": "噂する",
+    "accent": "0",
+    "meaning": "傳聞、謠言",
+    "pos": "V",
+    "example": "クラスで新しい先生の噂をしています。",
+    "exampleReading": "くらすであたらしいせんせいのうわさをしています。",
+    "exampleMeaning": "班上正在談論新老師的傳聞。"
+  },
+  {
+    "kana": "かつどう",
+    "kanji": "活動する",
+    "accent": "0",
+    "meaning": "活動",
+    "pos": "V",
+    "example": "学生たちは地域のために活動しています。",
+    "exampleReading": "がくせいたちはちいきのためにかつどうしています。",
+    "exampleMeaning": "學生們為了地方社區而活動。"
+  },
+  {
+    "kana": "かつやく",
+    "kanji": "活躍する",
+    "accent": "0",
+    "meaning": "活躍、發揮能力",
+    "pos": "V",
+    "example": "彼は海外でも活躍しています。",
+    "exampleReading": "かれはかいがいでもかつやくしています。",
+    "exampleMeaning": "他在海外也很活躍。"
+  },
+  {
+    "kana": "きょうそう",
+    "kanji": "競争する",
+    "accent": "0",
+    "meaning": "競爭",
+    "pos": "V",
+    "example": "二つの会社が新しい市場で競争しています。",
+    "exampleReading": "ふたつのかいしゃがあたらしいしじょうできょうそうしています。",
+    "exampleMeaning": "兩家公司正在新市場競爭。"
+  },
+  {
+    "kana": "りゅうこう",
+    "kanji": "流行する",
+    "accent": "0",
+    "meaning": "流行",
+    "pos": "V",
+    "example": "今年はこの色が流行しています。",
+    "exampleReading": "ことしはこのいろがりゅうこうしています。",
+    "exampleMeaning": "今年流行這個顏色。"
+  },
+  {
+    "kana": "ひっと",
+    "kanji": "ヒットする",
+    "accent": "1",
+    "meaning": "暢銷、爆紅",
+    "pos": "V",
+    "example": "その映画は若い人の間でヒットしました。",
+    "exampleReading": "そのえいがはわかいひとのあいだでひっとしました。",
+    "exampleMeaning": "那部電影在年輕人之間爆紅。"
+  },
+  {
+    "kana": "ちゅうもく",
+    "kanji": "注目する",
+    "accent": "0",
+    "meaning": "注目",
+    "pos": "V",
+    "example": "先生はこの点に注目してくださいと言いました。",
+    "exampleReading": "せんせいはこのてんにちゅうもくしてくださいといいました。",
+    "exampleMeaning": "老師說請注意這一點。"
+  },
+  {
+    "kana": "はくしゅ",
+    "kanji": "拍手する",
+    "accent": "1",
+    "meaning": "拍手",
+    "pos": "V",
+    "example": "発表が終わるとみんなが拍手しました。",
+    "exampleReading": "はっぴょうがおわるとみんながはくしゅしました。",
+    "exampleMeaning": "發表結束後大家拍手了。"
+  },
+  {
+    "kana": "あくしゅ",
+    "kanji": "握手する",
+    "accent": "1",
+    "meaning": "握手",
+    "pos": "V",
+    "example": "試合の後で相手と握手しました。",
+    "exampleReading": "しあいのあとであいてとあくしゅしました。",
+    "exampleMeaning": "比賽後和對手握手了。"
+  },
+  {
+    "kana": "いんたい",
+    "kanji": "引退する",
+    "accent": "0",
+    "meaning": "退出、退休",
+    "pos": "V",
+    "example": "その選手は今年で引退します。",
+    "exampleReading": "そのせんしゅはことしでいんたいします。",
+    "exampleMeaning": "那位選手今年要退休。"
+  },
+  {
+    "kana": "とうじょう",
+    "kanji": "登場する",
+    "accent": "0",
+    "meaning": "登場",
+    "pos": "V",
+    "example": "新しいキャラクターが物語に登場しました。",
+    "exampleReading": "あたらしいきゃらくたーがものがたりにとうじょうしました。",
+    "exampleMeaning": "新的角色在故事中登場了。"
+  },
+  {
+    "kana": "かいさん",
+    "kanji": "解散する",
+    "accent": "0",
+    "meaning": "解散",
+    "pos": "V",
+    "example": "コンサートの後で駅前で解散しました。",
+    "exampleReading": "こんさーとのあとでえきまえでかいさんしました。",
+    "exampleMeaning": "演唱會後在車站前解散。"
+  },
+  {
+    "kana": "じすい",
+    "kanji": "自炊する",
+    "accent": "0",
+    "meaning": "自己煮飯",
+    "pos": "V",
+    "example": "一人暮らしを始めてから自炊しています。",
+    "exampleReading": "ひとりぐらしをはじめてからじすいしています。",
+    "exampleMeaning": "開始一個人生活後，我都自己煮飯。"
+  },
+  {
+    "kana": "がいしょく",
+    "kanji": "外食する",
+    "accent": "0",
+    "meaning": "外食",
+    "pos": "V",
+    "example": "今日は疲れたので外食しましょう。",
+    "exampleReading": "きょうはつかれたのでがいしょくしましょう。",
+    "exampleMeaning": "今天累了，我們去外面吃吧。"
+  },
+  {
+    "kana": "かんぱい",
+    "kanji": "乾杯する",
+    "accent": "0",
+    "meaning": "乾杯",
+    "pos": "V",
+    "example": "友達の誕生日にみんなで乾杯しました。",
+    "exampleReading": "ともだちのたんじょうびにみんなでかんぱいしました。",
+    "exampleMeaning": "在朋友生日時大家一起乾杯。"
+  },
+  {
+    "kana": "そんざい",
+    "kanji": "存在する",
+    "accent": "0",
+    "meaning": "存在",
+    "pos": "V",
+    "example": "この町には古い伝説が存在します。",
+    "exampleReading": "このまちにはふるいでんせつがそんざいします。",
+    "exampleMeaning": "這個城鎮存在著古老傳說。"
+  },
+  {
+    "kana": "ぺこぺこ",
+    "kanji": "ぺこぺこ",
+    "accent": "1",
+    "meaning": "空空、餓扁了",
+    "pos": "な形容詞",
+    "example": "朝から何も食べていないのでお腹がぺこぺこです。",
+    "exampleReading": "あさからなにもたべていないのでおなかがぺこぺこです。",
+    "exampleMeaning": "從早上開始什麼都沒吃，所以肚子餓扁了。"
+  },
+  {
+    "kana": "からから",
+    "kanji": "からから",
+    "accent": "0",
+    "meaning": "乾渴、乾巴巴",
+    "pos": "な形容詞",
+    "example": "暑くてのどがからからです。",
+    "exampleReading": "あつくてのどがからからです。",
+    "exampleMeaning": "因為很熱，喉嚨乾得不得了。"
+  },
+  {
+    "kana": "はやる",
+    "kanji": "流行る",
+    "accent": "2",
+    "meaning": "流行",
+    "pos": "V",
+    "example": "この店のパンは若い人に流行っています。",
+    "exampleReading": "このみせのぱんはわかいひとにはやっています。",
+    "exampleMeaning": "這家店的麵包在年輕人之間很流行。"
+  },
+  {
+    "kana": "そまる",
+    "kanji": "染まる",
+    "accent": "0",
+    "meaning": "染上、被染成",
+    "pos": "V",
+    "example": "夕焼けで空が赤く染まりました。",
+    "exampleReading": "ゆうやけでそらがあかくそまりました。",
+    "exampleMeaning": "天空被晚霞染成紅色。"
+  },
+  {
+    "kana": "ひげをはやす",
+    "kanji": "ひげを生やす",
+    "accent": "2",
+    "meaning": "留鬍子",
+    "pos": "V",
+    "example": "兄は最近ひげを生やしています。",
+    "exampleReading": "あにはさいきんひげをはやしています。",
+    "exampleMeaning": "哥哥最近在留鬍子。"
+  },
+  {
+    "kana": "ひげをそる",
+    "kanji": "ひげをそる",
+    "accent": "1",
+    "meaning": "刮鬍子",
+    "pos": "V",
+    "example": "父は毎朝ひげをそります。",
+    "exampleReading": "ちちはまいあさひげをそります。",
+    "exampleMeaning": "爸爸每天早上刮鬍子。"
+  },
+  {
+    "kana": "かみをとかす",
+    "kanji": "髪をとかす",
+    "accent": "2",
+    "meaning": "梳頭髮",
+    "pos": "V",
+    "example": "出かける前に髪をとかしました。",
+    "exampleReading": "でかけるまえにかみをとかしました。",
+    "exampleMeaning": "出門前梳了頭髮。"
+  },
+  {
+    "kana": "さぼる",
+    "kanji": "サボる",
+    "accent": "2",
+    "meaning": "偷懶、翹課",
+    "pos": "V",
+    "example": "授業をサボってはいけません。",
+    "exampleReading": "じゅぎょうをさぼってはいけません。",
+    "exampleMeaning": "不可以翹課。"
+  },
+  {
+    "kana": "そめる",
+    "kanji": "染める",
+    "accent": "0",
+    "meaning": "染",
+    "pos": "V",
+    "example": "妹は髪を茶色に染めました。",
+    "exampleReading": "いもうとはかみをちゃいろにそめました。",
+    "exampleMeaning": "妹妹把頭髮染成茶色。"
+  },
+  {
+    "kana": "はえる",
+    "kanji": "生える",
+    "accent": "2",
+    "meaning": "長出、生長",
+    "pos": "V",
+    "example": "春になると庭に草が生えます。",
+    "exampleReading": "はるになるとにわにくさがはえます。",
+    "exampleMeaning": "到了春天，院子裡會長草。"
+  },
+  {
+    "kana": "なまける",
+    "kanji": "怠ける",
+    "accent": "3",
+    "meaning": "偷懶",
+    "pos": "V",
+    "example": "怠けないで毎日少しずつ勉強します。",
+    "exampleReading": "なまけないでまいにちすこしずつべんきょうします。",
+    "exampleMeaning": "不要偷懶，每天一點一點地學習。"
+  }
+]

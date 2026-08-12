@@ -102,7 +102,26 @@
       let copyTimer;
       function shuffle(array) { const result = [...array]; for (let i = result.length - 1; i > 0; i -= 1) { const j = Math.floor(Math.random() * (i + 1)); [result[i], result[j]] = [result[j], result[i]]; } return result; }
       function currentCard() { return cards[state.order[state.index]]; }
-      function filteredCards() { if (state.filter === "all") return source.days.flatMap((day) => day.cards.map((card) => ({ ...card, dayTitle: day.title, page: day.page }))); const day = source.days.find((item) => item.id === state.filter); return day.cards.map((card) => ({ ...card, dayTitle: day.title, page: day.page })); }
+      function normalizeCard(card, day) {
+        const kana = card.kana || card.r;
+        const kanji = card.kanji || card.k;
+        const meaning = card.meaning || card.m;
+        const pos = card.pos || card.p || "N";
+        const accent = String(card.accent ?? card.a ?? "0");
+        return {
+          kana,
+          kanji,
+          accent,
+          meaning,
+          pos,
+          example: card.example || card.e || `${kanji}を復習します。`,
+          exampleReading: card.exampleReading || card.er || `${kana}をふくしゅうします。`,
+          exampleMeaning: card.exampleMeaning || card.em || `複習「${meaning}」這個單字。`,
+          dayTitle: day.title,
+          page: day.page
+        };
+      }
+      function filteredCards() { if (state.filter === "all") return source.days.flatMap((day) => day.cards.map((card) => normalizeCard(card, day))); const day = source.days.find((item) => item.id === state.filter); return day.cards.map((card) => normalizeCard(card, day)); }
       function renderTabs() {
         dayTabs.innerHTML = "";
         const all = document.createElement("button"); all.type = "button"; all.className = `tab ${state.filter === "all" ? "active" : ""}`; all.textContent = "全部"; all.addEventListener("click", () => setFilter("all")); dayTabs.appendChild(all);

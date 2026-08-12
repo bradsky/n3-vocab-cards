@@ -122,6 +122,15 @@
         };
       }
       function filteredCards() { if (state.filter === "all") return source.days.flatMap((day) => day.cards.map((card) => normalizeCard(card, day))); const day = source.days.find((item) => item.id === state.filter); return day.cards.map((card) => normalizeCard(card, day)); }
+      async function loadSource() {
+        const data = await fetch("./daily-cards.json").then((response) => response.json());
+        if (data.schema !== "daily-files-v1") return data;
+        const days = await Promise.all(data.days.map(async (day) => {
+          const cards = await fetch(`./${day.file}`).then((response) => response.json());
+          return { ...day, cards };
+        }));
+        return { ...data, days };
+      }
       function renderTabs() {
         dayTabs.innerHTML = "";
         const all = document.createElement("button"); all.type = "button"; all.className = `tab ${state.filter === "all" ? "active" : ""}`; all.textContent = "全部"; all.addEventListener("click", () => setFilter("all")); dayTabs.appendChild(all);
@@ -142,7 +151,7 @@
       copyBtn.addEventListener("click", copyCurrentWord); el("nextBtn").addEventListener("click", () => move(1)); el("prevBtn").addEventListener("click", () => move(-1)); el("shuffleBtn").addEventListener("click", resetDeck);
       document.addEventListener("keydown", (event) => { if (event.key === " ") { event.preventDefault(); state.showingBack = !state.showingBack; render(); } if (event.key === "ArrowRight") move(1); if (event.key === "ArrowLeft") move(-1); });
       if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").then((registration) => registration.update()));
-      fetch("./daily-cards.json").then((response) => response.json()).then((data) => { source = data; resetDeck(); });
+      loadSource().then((data) => { source = data; resetDeck(); });
     </script>
   </body>
 </html>

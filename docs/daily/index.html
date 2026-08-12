@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>N3 單字卡 11日總複習</title>
+    <meta name="theme-color" content="#f7f4ee" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="N3 11日複習" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="manifest" href="./manifest.json" />
+    <style>
+      :root { --paper:#f7f4ee; --ink:#2f2c28; --muted:#746f67; --line:#d8d1c5; --soft:#ebe6dc; --accent:#8a2f25; --accent-soft:#eadbd6; --white:#fffdf8; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; background: var(--paper); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans TC", sans-serif; letter-spacing: 0; }
+      main { width: min(980px, calc(100% - 32px)); margin: 0 auto; padding: 40px 0 28px; }
+      header { display: flex; align-items: end; justify-content: space-between; gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+      h1 { margin: 0; font-size: clamp(28px, 5vw, 48px); font-weight: 500; }
+      .subhead { margin: 8px 0 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+      .count { color: var(--muted); font-size: 14px; white-space: nowrap; }
+      .tabs { display: flex; gap: 8px; overflow-x: auto; padding: 18px 0 6px; scrollbar-width: thin; }
+      .tab { min-height: 38px; flex: 0 0 auto; padding: 0 12px; border: 1px solid var(--line); background: var(--white); color: var(--muted); font-size: 14px; }
+      .tab.active { background: var(--ink); border-color: var(--ink); color: var(--white); }
+      .tab small { color: inherit; opacity: .72; margin-left: 4px; }
+      .study { display: grid; grid-template-columns: 1fr; gap: 18px; padding: 22px 0; }
+      .meta { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 14px; }
+      .card-shell { position: relative; min-height: 360px; border: 1px solid var(--line); background: var(--white); display: grid; place-items: center; padding: 34px; }
+      .card { width: 100%; max-width: 660px; text-align: center; }
+      .copy-tools { position: absolute; top: 8px; right: 8px; display: flex; align-items: center; gap: 4px; }
+      .copy-status { color: var(--muted); font-size: 13px; opacity: 0; pointer-events: none; transition: opacity 120ms ease; white-space: nowrap; }
+      .copy-status.show { opacity: 1; }
+      .copy-btn { width: 40px; height: 40px; min-height: 40px; padding: 0; display: grid; place-items: center; font-size: 22px; line-height: 1; }
+      .label { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+      .front { font-size: clamp(42px, 11vw, 92px); line-height: 1.1; font-weight: 400; overflow-wrap: anywhere; }
+      .kanji { font-size: clamp(32px, 7vw, 62px); line-height: 1.15; font-weight: 500; margin-bottom: 14px; overflow-wrap: anywhere; }
+      .word-reading { color: var(--muted); font-size: 16px; margin-bottom: 10px; }
+      .meaning { color: var(--accent); font-size: 20px; margin-bottom: 22px; line-height: 1.5; }
+      .example { width: min(100%, 580px); margin: 0 auto; padding-top: 20px; border-top: 1px solid var(--line); font-size: 20px; line-height: 1.7; }
+      .example-reading, .example-meaning, .part-of-speech { width: min(100%, 580px); margin: 8px auto 0; line-height: 1.7; }
+      .example-reading, .part-of-speech { color: var(--muted); font-size: 15px; }
+      .example-meaning { color: var(--ink); font-size: 16px; }
+      .controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+      button { min-height: 46px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font: inherit; cursor: pointer; }
+      button:hover { background: var(--soft); }
+      button:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 2px; }
+      .primary { background: var(--ink); border-color: var(--ink); color: var(--white); }
+      .primary:hover { background: #1f1d1a; }
+      .progress-wrap { height: 4px; background: var(--soft); }
+      .progress { width: 0%; height: 100%; background: var(--accent); transition: width 160ms ease; }
+      details { border-top: 1px solid var(--line); padding-top: 18px; }
+      summary { cursor: pointer; color: var(--muted); margin-bottom: 14px; }
+      .list { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+      .list li { border: 1px solid var(--line); background: rgba(255,253,248,.68); padding: 10px 12px; font-size: 14px; }
+      .front-only .back-content, .back-only .front-content { display: none; }
+      @media (max-width: 640px) {
+        main { width: min(100% - 22px, 980px); padding-top: 24px; }
+        header { display: block; }
+        .count { margin-top: 12px; }
+        .card-shell { min-height: 340px; padding: 24px 18px; }
+        .controls { grid-template-columns: 1fr 1fr; }
+        #nextBtn { order: 2; }
+        #flipBtn { order: 3; }
+        #shuffleBtn { order: 4; }
+        .example { font-size: 18px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <h1>N3 單字卡 11日總複習</h1>
+          <p class="subhead">用頁碼排序成第一日到第十一日。可單日複習，也可以選「全部」混合抽卡。</p>
+        </div>
+        <div class="count" id="counter">1 / 1</div>
+      </header>
+
+      <nav class="tabs" id="dayTabs" aria-label="每日單字表篩選"></nav>
+
+      <section class="study" aria-label="單字卡練習">
+        <div class="meta"><span id="activeDayText">載入中</span><span id="deckTotalText"></span></div>
+        <div class="progress-wrap" aria-hidden="true"><div class="progress" id="progress"></div></div>
+        <div class="card-shell front-only" id="cardShell">
+          <div class="copy-tools"><span class="copy-status" id="copyStatus">Copy Success</span><button type="button" class="copy-btn" id="copyBtn" aria-label="Copy word" title="Copy word">⧉</button></div>
+          <article class="card" aria-live="polite">
+            <div class="front-content"><div class="label">正面</div><div class="front" id="frontText"></div></div>
+            <div class="back-content"><div class="label">背面</div><div class="word-reading" id="wordReadingText"></div><div class="kanji" id="kanjiText"></div><div class="meaning" id="meaningText"></div><div class="example" id="exampleText"></div><div class="example-reading" id="exampleReadingText"></div><div class="example-meaning" id="exampleMeaningText"></div><div class="part-of-speech" id="partOfSpeechText"></div></div>
+          </article>
+        </div>
+        <div class="controls"><button type="button" id="prevBtn">上一張</button><button type="button" class="primary" id="flipBtn">翻面</button><button type="button" id="nextBtn">下一張</button><button type="button" id="shuffleBtn">重新洗牌</button></div>
+      </section>
+
+      <details><summary>查看目前篩選單字</summary><ul class="list" id="wordList"></ul></details>
+    </main>
+
+    <script>
+      let source = { days: [] };
+      let cards = [];
+      const state = { filter: "all", order: [], index: 0, showingBack: false };
+      const el = (id) => document.getElementById(id);
+      const cardShell = el("cardShell"), frontText = el("frontText"), wordReadingText = el("wordReadingText"), kanjiText = el("kanjiText"), meaningText = el("meaningText"), exampleText = el("exampleText"), exampleReadingText = el("exampleReadingText"), exampleMeaningText = el("exampleMeaningText"), partOfSpeechText = el("partOfSpeechText"), copyBtn = el("copyBtn"), copyStatus = el("copyStatus"), counter = el("counter"), progress = el("progress"), wordList = el("wordList"), dayTabs = el("dayTabs"), activeDayText = el("activeDayText"), deckTotalText = el("deckTotalText");
+      let copyTimer;
+      function shuffle(array) { const result = [...array]; for (let i = result.length - 1; i > 0; i -= 1) { const j = Math.floor(Math.random() * (i + 1)); [result[i], result[j]] = [result[j], result[i]]; } return result; }
+      function currentCard() { return cards[state.order[state.index]]; }
+      function filteredCards() { if (state.filter === "all") return source.days.flatMap((day) => day.cards.map((card) => ({ ...card, dayTitle: day.title, page: day.page }))); const day = source.days.find((item) => item.id === state.filter); return day.cards.map((card) => ({ ...card, dayTitle: day.title, page: day.page })); }
+      function renderTabs() {
+        dayTabs.innerHTML = "";
+        const all = document.createElement("button"); all.type = "button"; all.className = `tab ${state.filter === "all" ? "active" : ""}`; all.textContent = "全部"; all.addEventListener("click", () => setFilter("all")); dayTabs.appendChild(all);
+        source.days.forEach((day) => { const button = document.createElement("button"); button.type = "button"; button.className = `tab ${state.filter === day.id ? "active" : ""}`; button.innerHTML = `${day.title}<small>p.${day.page}</small>`; button.addEventListener("click", () => setFilter(day.id)); dayTabs.appendChild(button); });
+      }
+      function render() {
+        if (!cards.length) return;
+        const card = currentCard();
+        frontText.textContent = card.kana; wordReadingText.textContent = `${card.kana} [${card.accent}]`; kanjiText.textContent = card.kanji; meaningText.textContent = card.meaning; exampleText.textContent = card.example; exampleReadingText.textContent = card.exampleReading; exampleMeaningText.textContent = card.exampleMeaning; partOfSpeechText.textContent = `POS：${card.pos}`; counter.textContent = `${state.index + 1} / ${cards.length}`; progress.style.width = `${((state.index + 1) / cards.length) * 100}%`; cardShell.className = `card-shell ${state.showingBack ? "back-only" : "front-only"}`; el("flipBtn").textContent = state.showingBack ? "看正面" : "翻面";
+        const active = state.filter === "all" ? { title: "全部", page: "15-125" } : source.days.find((day) => day.id === state.filter); activeDayText.textContent = state.filter === "all" ? "全部 11 日混合" : `${active.title}｜p.${active.page}`; deckTotalText.textContent = `${cards.length} 張`;
+      }
+      function renderWordList() { wordList.innerHTML = ""; state.order.forEach((cardIndex) => { const card = cards[cardIndex]; const item = document.createElement("li"); item.textContent = `${card.dayTitle ? card.dayTitle + "｜" : ""}${card.kana} / ${card.kanji}`; wordList.appendChild(item); }); }
+      function resetDeck() { cards = filteredCards(); state.order = shuffle(cards.map((_, index) => index)); state.index = 0; state.showingBack = false; renderTabs(); render(); renderWordList(); }
+      function setFilter(filter) { state.filter = filter; resetDeck(); }
+      function move(delta) { state.index = (state.index + delta + cards.length) % cards.length; state.showingBack = false; render(); }
+      async function copyCurrentWord() { const card = currentCard(); const text = `${card.kanji}（${card.kana}）`; try { await navigator.clipboard.writeText(text); } catch { const textarea = document.createElement("textarea"); textarea.value = text; textarea.setAttribute("readonly", ""); textarea.style.position = "fixed"; textarea.style.opacity = "0"; document.body.appendChild(textarea); textarea.select(); document.execCommand("copy"); textarea.remove(); } copyStatus.classList.add("show"); clearTimeout(copyTimer); copyTimer = setTimeout(() => copyStatus.classList.remove("show"), 1000); }
+      el("flipBtn").addEventListener("click", () => { state.showingBack = !state.showingBack; render(); });
+      copyBtn.addEventListener("click", copyCurrentWord); el("nextBtn").addEventListener("click", () => move(1)); el("prevBtn").addEventListener("click", () => move(-1)); el("shuffleBtn").addEventListener("click", resetDeck);
+      document.addEventListener("keydown", (event) => { if (event.key === " ") { event.preventDefault(); state.showingBack = !state.showingBack; render(); } if (event.key === "ArrowRight") move(1); if (event.key === "ArrowLeft") move(-1); });
+      if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").then((registration) => registration.update()));
+      fetch("./daily-cards.json").then((response) => response.json()).then((data) => { source = data; resetDeck(); });
+    </script>
+  </body>
+</html>

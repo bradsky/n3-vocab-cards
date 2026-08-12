@@ -1,0 +1,83 @@
+{
+  "title": "N3 單字卡 11日總複習",
+  "schema": "daily-files-v1",
+  "days": [
+    {
+      "id": "day-1",
+      "day": 1,
+      "title": "第一日",
+      "page": 15,
+      "file": "day-1.json"
+    },
+    {
+      "id": "day-2",
+      "day": 2,
+      "title": "第二日",
+      "page": 25,
+      "file": "day-2.json"
+    },
+    {
+      "id": "day-3",
+      "day": 3,
+      "title": "第三日",
+      "page": 35,
+      "file": "day-3.json"
+    },
+    {
+      "id": "day-4",
+      "day": 4,
+      "title": "第四日",
+      "page": 45,
+      "file": "day-4.json"
+    },
+    {
+      "id": "day-5",
+      "day": 5,
+      "title": "第五日",
+      "page": 57,
+      "file": "day-5.json"
+    },
+    {
+      "id": "day-6",
+      "day": 6,
+      "title": "第六日",
+      "page": 69,
+      "file": "day-6.json"
+    },
+    {
+      "id": "day-7",
+      "day": 7,
+      "title": "第七日",
+      "page": 81,
+      "file": "day-7.json"
+    },
+    {
+      "id": "day-8",
+      "day": 8,
+      "title": "第八日",
+      "page": 91,
+      "file": "day-8.json"
+    },
+    {
+      "id": "day-9",
+      "day": 9,
+      "title": "第九日",
+      "page": 103,
+      "file": "day-9.json"
+    },
+    {
+      "id": "day-10",
+      "day": 10,
+      "title": "第十日",
+      "page": 113,
+      "file": "day-10.json"
+    },
+    {
+      "id": "day-11",
+      "day": 11,
+      "title": "第十一日",
+      "page": 125,
+      "file": "day-11.json"
+    }
+  ]
+}

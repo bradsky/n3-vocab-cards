@@ -443,21 +443,51 @@
       const copyStatus = $("copyStatus");
       let copyTimer;
 
+      function cleanExampleWord(word) { return String(word).replace(/[（(]する[）)]/g, "する").replace(/[（(][^)）]+[）)]/g, "").replace(/\/.+$/g, "").trim(); }
+      function fallbackExample(kanji, kana, meaning, index) {
+        const word = cleanExampleWord(kanji);
+        const templates = [
+          ["今日は「__WORD__」について話しました。", "きょうは「__KANA__」についてはなしました。", `今天聊到了「${meaning}」。`],
+          ["メモに「__WORD__」を書きました。", "めもに「__KANA__」をかきました。", `我把「${meaning}」寫在筆記裡。`],
+          ["友だちが「__WORD__」と言っていました。", "ともだちが「__KANA__」といっていました。", `朋友說到了「${meaning}」。`],
+          ["スマホで「__WORD__」を調べました。", "すまほで「__KANA__」をしらべました。", `我用手機查了「${meaning}」。`],
+          ["先生が「__WORD__」の意味を説明しました。", "せんせいが「__KANA__」のいみをせつめいしました。", `老師說明了「${meaning}」的意思。`],
+          ["朝、ニュースで「__WORD__」を見ました。", "あさ、にゅーすで「__KANA__」をみました。", `早上在新聞看到「${meaning}」。`],
+          ["家で「__WORD__」という言葉を聞きました。", "いえで「__KANA__」ということばをききました。", `在家聽到了「${meaning}」這個詞。`],
+          ["ノートに「__WORD__」の例を書きました。", "のーとに「__KANA__」のれいをかきました。", `我在筆記本寫了「${meaning}」的例子。`],
+          ["LINEで「__WORD__」の話題が出ました。", "らいんで「__KANA__」のわだいがでました。", `LINE 裡聊到「${meaning}」。`],
+          ["今日、「__WORD__」という言葉を聞きました。", "きょう、「__KANA__」ということばをききました。", `今天聽到了「${meaning}」這個詞。`],
+          ["駅で「__WORD__」という案内を見ました。", "えきで「__KANA__」というあんないをみました。", `在車站看到了「${meaning}」的告示。`],
+          ["会話で「__WORD__」を使ってみました。", "かいわで「__KANA__」をつかってみました。", `我在對話中試著用了「${meaning}」。`],
+          ["授業で「__WORD__」が出てきました。", "じゅぎょうで「__KANA__」がでてきました。", `課堂上出現了「${meaning}」。`],
+          ["買い物中に「__WORD__」を思い出しました。", "かいものちゅうに「__KANA__」をおもいだしました。", `買東西時想起了「${meaning}」。`],
+          ["カフェで「__WORD__」という言葉を見ました。", "かふぇで「__KANA__」ということばをみました。", `在咖啡店看到了「${meaning}」這個詞。`],
+          ["帰り道に「__WORD__」を思い出しました。", "かえりみちに「__KANA__」をおもいだしました。", `回家路上想起了「${meaning}」。`]
+        ];
+        const [example, exampleReading, exampleMeaning] = templates[index % templates.length];
+        return {
+          example: example.replace("__WORD__", word),
+          exampleReading: exampleReading.replace("__KANA__", kana),
+          exampleMeaning
+        };
+      }
+
       function normalizeCard(card, day) {
         const kana = card.kana || card.r;
         const kanji = card.kanji || card.k;
         const meaning = card.meaning || card.m;
         const pos = card.pos || card.p || "N";
         const accent = String(card.accent ?? card.a ?? "0");
+        const fallback = fallbackExample(kanji, kana, meaning, card._exampleIndex || 0);
         return {
           kana,
           kanji,
           meaning,
           pos,
           accent,
-          example: card.example || card.e || `${kanji}を復習します。`,
-          exampleReading: card.exampleReading || card.er || `${kana}をふくしゅうします。`,
-          exampleMeaning: card.exampleMeaning || card.em || `複習「${meaning}」這個單字。`,
+          example: card.example || card.e || fallback.example,
+          exampleReading: card.exampleReading || card.er || fallback.exampleReading,
+          exampleMeaning: card.exampleMeaning || card.em || fallback.exampleMeaning,
           dayTitle: day.title,
           page: day.page
         };
@@ -469,6 +499,16 @@
           const cards = await fetch(`../daily/${day.file}`).then((response) => response.json());
           return { ...day, cards };
         }));
+        const examples = await fetch("../daily/examples-v2.json").then((response) => response.ok ? response.json() : null).catch(() => null);
+        if (examples?.schema === "daily-examples-v2") {
+          const byDay = new Map(examples.days.map((day) => [day.id, day.cards]));
+          for (const day of days) {
+            const patches = byDay.get(day.id) || [];
+            day.cards = day.cards.map((card, index) => ({ ...card, ...(patches[index] || {}) }));
+          }
+        }
+        let exampleIndex = 0;
+        for (const day of days) day.cards = day.cards.map((card) => ({ ...card, _exampleIndex: exampleIndex++ }));
         return { ...manifest, days };
       }
 

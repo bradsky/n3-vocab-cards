@@ -1,4 +1,4 @@
-const CACHE_NAME = "n3-vocab-cards-daily-v2";
+const CACHE_NAME = "n3-vocab-cards-daily-v3";
 const ASSETS = ["./", "./index.html", "./manifest.json", "./daily-cards.json", "./day-1.json", "./day-2.json", "./day-3.json", "./day-4.json", "./day-5.json", "./day-6.json", "./day-7.json", "./day-8.json", "./day-9.json", "./day-10.json", "./day-11.json"];
 self.addEventListener("install", (event) => { event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))); self.skipWaiting(); });
 self.addEventListener("activate", (event) => { event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))); self.clients.claim(); });

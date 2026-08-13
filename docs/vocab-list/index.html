@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>N3 單字總覽</title>
+    <meta name="theme-color" content="#101014" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="N3 單字總覽" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="./manifest.json" />
+    <style>
+      :root {
+        --bg: #101014;
+        --bg-2: #19161c;
+        --ink: #f7f2e8;
+        --muted: #bdb2a3;
+        --line: rgba(255, 255, 255, .18);
+        --glass: rgba(255, 255, 255, .105);
+        --glass-strong: rgba(255, 255, 255, .16);
+        --field: rgba(255, 255, 255, .09);
+        --gold: #d8b56d;
+        --rose: #d48aa0;
+        --blue: #89a7d8;
+        --green: #9fcab1;
+        --shadow: 0 24px 70px rgba(0, 0, 0, .38);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        background:
+          linear-gradient(145deg, #0f1014 0%, #18141b 35%, #222015 68%, #111416 100%);
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans TC", sans-serif;
+        letter-spacing: 0;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), rgba(0,0,0,.12));
+      }
+      main {
+        position: relative;
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 42px 0 32px;
+      }
+      header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 22px;
+        align-items: end;
+        margin-bottom: 24px;
+      }
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--gold);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .16em;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(34px, 6vw, 76px);
+        line-height: .96;
+        font-weight: 700;
+      }
+      .summary {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(92px, 1fr));
+        gap: 10px;
+        min-width: min(380px, 100%);
+      }
+      .metric {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--glass);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(22px) saturate(130%);
+      }
+      .metric strong { display: block; font-size: 24px; line-height: 1; }
+      .metric span { display: block; margin-top: 7px; color: var(--muted); font-size: 12px; }
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        display: grid;
+        gap: 14px;
+        padding: 14px 0 18px;
+        background: linear-gradient(to bottom, rgba(16,16,20,.96), rgba(16,16,20,.72), rgba(16,16,20,0));
+        backdrop-filter: blur(18px);
+      }
+      .tabs {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 2px;
+        scrollbar-width: thin;
+      }
+      button, input {
+        font: inherit;
+      }
+      .tab {
+        flex: 0 0 auto;
+        min-height: 44px;
+        padding: 0 14px;
+        color: var(--muted);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255,255,255,.07);
+        cursor: pointer;
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+      }
+      .tab:hover { transform: translateY(-1px); border-color: rgba(216,181,109,.62); color: var(--ink); }
+      .tab.active {
+        color: #15120d;
+        background: linear-gradient(135deg, #ffe7a2, #d8b56d 52%, #b88c43);
+        border-color: rgba(255, 234, 175, .86);
+      }
+      .tab small { opacity: .72; margin-left: 4px; }
+      .filters {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        align-items: center;
+      }
+      .search-wrap {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        align-items: center;
+        min-height: 50px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--field);
+        backdrop-filter: blur(20px) saturate(130%);
+      }
+      .search-wrap svg {
+        width: 20px;
+        height: 20px;
+        margin: 0 auto;
+        color: var(--muted);
+      }
+      #searchInput {
+        width: 100%;
+        min-width: 0;
+        height: 48px;
+        color: var(--ink);
+        border: 0;
+        outline: 0;
+        background: transparent;
+      }
+      #searchInput::placeholder { color: rgba(189,178,163,.72); }
+      .active-copy {
+        color: var(--muted);
+        font-size: 14px;
+        white-space: nowrap;
+      }
+      .panel {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.07));
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(26px) saturate(140%);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      thead th {
+        position: sticky;
+        top: 120px;
+        z-index: 2;
+        padding: 16px 18px;
+        color: var(--muted);
+        background: rgba(20,18,21,.88);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--line);
+        font-size: 13px;
+        font-weight: 600;
+        text-align: left;
+      }
+      tbody tr {
+        cursor: pointer;
+        transition: background 160ms ease, transform 160ms ease;
+      }
+      tbody tr:hover {
+        background: rgba(255,255,255,.11);
+      }
+      td {
+        padding: 17px 18px;
+        border-bottom: 1px solid rgba(255,255,255,.09);
+        vertical-align: middle;
+      }
+      .word { font-size: 22px; font-weight: 700; color: var(--ink); }
+      .reading { color: var(--blue); font-weight: 600; }
+      .meaning { color: #f3e6d1; }
+      .pos {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 10px;
+        border: 1px solid rgba(216,181,109,.38);
+        border-radius: 999px;
+        color: var(--gold);
+        background: rgba(216,181,109,.09);
+        font-size: 12px;
+        white-space: nowrap;
+      }
+      .empty {
+        padding: 44px 18px;
+        color: var(--muted);
+        text-align: center;
+      }
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: none;
+        place-items: center;
+        padding: 20px;
+        background: rgba(8,8,11,.62);
+        backdrop-filter: blur(20px);
+      }
+      .modal.open { display: grid; }
+      .dialog {
+        position: relative;
+        width: min(720px, 100%);
+        max-height: min(760px, calc(100vh - 40px));
+        overflow: auto;
+        border: 1px solid rgba(255,255,255,.22);
+        border-radius: 34px;
+        background:
+          linear-gradient(145deg, rgba(255,255,255,.22), rgba(255,255,255,.08)),
+          linear-gradient(135deg, rgba(137,167,216,.14), rgba(216,181,109,.11));
+        box-shadow: 0 32px 90px rgba(0,0,0,.55);
+        backdrop-filter: blur(34px) saturate(160%);
+      }
+      .dialog-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+        padding: 22px 22px 0;
+      }
+      .day-chip {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .dialog-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .icon-button {
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        color: var(--ink);
+        background: rgba(255,255,255,.08);
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+      }
+      .icon-button svg { width: 20px; height: 20px; }
+      .dialog-body {
+        padding: 22px clamp(22px, 5vw, 54px) 40px;
+        text-align: center;
+      }
+      .modal-reading {
+        color: var(--blue);
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .modal-word {
+        margin: 12px 0 10px;
+        font-size: clamp(44px, 10vw, 86px);
+        line-height: 1.06;
+        font-weight: 800;
+        overflow-wrap: anywhere;
+      }
+      .modal-meaning {
+        color: var(--gold);
+        font-size: 24px;
+        line-height: 1.45;
+      }
+      .modal-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin: 18px 0 24px;
+      }
+      .modal-example {
+        margin-top: 22px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+        font-size: 22px;
+        line-height: 1.7;
+      }
+      .modal-example-reading,
+      .modal-example-meaning {
+        margin-top: 8px;
+        line-height: 1.7;
+      }
+      .modal-example-reading { color: var(--muted); }
+      .modal-example-meaning { color: #fff6e6; }
+      .copy-status {
+        opacity: 0;
+        color: var(--green);
+        font-size: 13px;
+        transition: opacity 120ms ease;
+      }
+      .copy-status.show { opacity: 1; }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      }
+      @media (max-width: 760px) {
+        main { width: min(100% - 22px, 1180px); padding-top: 26px; }
+        header { grid-template-columns: 1fr; }
+        .summary { grid-template-columns: repeat(3, 1fr); min-width: 0; }
+        .metric { padding: 12px; border-radius: 16px; }
+        .metric strong { font-size: 20px; }
+        .filters { grid-template-columns: 1fr; }
+        .active-copy { white-space: normal; }
+        .panel { border-radius: 22px; background: transparent; border: 0; box-shadow: none; backdrop-filter: none; }
+        table, thead, tbody, tr, td { display: block; }
+        thead { display: none; }
+        tbody { display: grid; gap: 10px; }
+        tbody tr {
+          border: 1px solid var(--line);
+          border-radius: 20px;
+          background: var(--glass);
+          backdrop-filter: blur(20px) saturate(130%);
+          overflow: hidden;
+        }
+        td {
+          display: grid;
+          grid-template-columns: 88px 1fr;
+          gap: 10px;
+          padding: 12px 14px;
+          border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+        td::before {
+          content: attr(data-label);
+          color: var(--muted);
+          font-size: 12px;
+          align-self: center;
+        }
+        td:last-child { border-bottom: 0; }
+        .word { font-size: 24px; }
+        .modal { padding: 12px; }
+        .dialog { border-radius: 26px; }
+        .dialog-header { padding: 16px 16px 0; }
+        .dialog-body { padding: 18px 18px 30px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <p class="eyebrow">N3 Vocabulary Archive</p>
+          <h1>N3 單字總覽</h1>
+        </div>
+        <section class="summary" aria-label="統計">
+          <div class="metric"><strong id="metricDays">11</strong><span>天數</span></div>
+          <div class="metric"><strong id="metricCards">601</strong><span>單字</span></div>
+          <div class="metric"><strong id="metricShown">0</strong><span>顯示</span></div>
+        </section>
+      </header>
+
+      <section class="toolbar" aria-label="篩選">
+        <nav class="tabs" id="dayTabs" aria-label="每日單字表"></nav>
+        <div class="filters">
+          <label class="search-wrap" for="searchInput">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m1.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input id="searchInput" type="search" placeholder="搜尋漢字、平假名或中文意思" autocomplete="off" />
+          </label>
+          <div class="active-copy" id="activeText">載入中</div>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="單字表">
+        <table>
+          <thead>
+            <tr>
+              <th>漢字</th>
+              <th>平假名</th>
+              <th>中文意思</th>
+              <th>詞性</th>
+            </tr>
+          </thead>
+          <tbody id="wordRows"></tbody>
+        </table>
+        <div class="empty" id="emptyState" hidden>沒有符合的單字</div>
+      </section>
+    </main>
+
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalWord" aria-describedby="modalMeaning">
+      <article class="dialog">
+        <div class="dialog-header">
+          <div class="day-chip" id="modalDay"></div>
+          <div class="dialog-actions">
+            <span class="copy-status" id="copyStatus">Copy Success</span>
+            <button type="button" class="icon-button" id="copyBtn" aria-label="Copy word" title="Copy word">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8h11v11H8zM5 5h11v3M5 5v11h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="icon-button" id="closeBtn" aria-label="Close" title="Close">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="dialog-body">
+          <div class="modal-reading" id="modalReading"></div>
+          <h2 class="modal-word" id="modalWord"></h2>
+          <div class="modal-meaning" id="modalMeaning"></div>
+          <div class="modal-meta">
+            <span class="pos" id="modalPos"></span>
+            <span class="pos" id="modalPage"></span>
+          </div>
+          <div class="modal-example" id="modalExample"></div>
+          <div class="modal-example-reading" id="modalExampleReading"></div>
+          <div class="modal-example-meaning" id="modalExampleMeaning"></div>
+        </div>
+      </article>
+    </div>
+
+    <script>
+      const state = { filter: "all", query: "", source: { days: [] }, cards: [], activeCard: null };
+      const $ = (id) => document.getElementById(id);
+      const dayTabs = $("dayTabs");
+      const wordRows = $("wordRows");
+      const emptyState = $("emptyState");
+      const modal = $("modal");
+      const searchInput = $("searchInput");
+      const copyStatus = $("copyStatus");
+      let copyTimer;
+
+      function normalizeCard(card, day) {
+        const kana = card.kana || card.r;
+        const kanji = card.kanji || card.k;
+        const meaning = card.meaning || card.m;
+        const pos = card.pos || card.p || "N";
+        const accent = String(card.accent ?? card.a ?? "0");
+        return {
+          kana,
+          kanji,
+          meaning,
+          pos,
+          accent,
+          example: card.example || card.e || `${kanji}を復習します。`,
+          exampleReading: card.exampleReading || card.er || `${kana}をふくしゅうします。`,
+          exampleMeaning: card.exampleMeaning || card.em || `複習「${meaning}」這個單字。`,
+          dayTitle: day.title,
+          page: day.page
+        };
+      }
+
+      async function loadSource() {
+        const manifest = await fetch("../daily/daily-cards.json").then((response) => response.json());
+        const days = await Promise.all(manifest.days.map(async (day) => {
+          const cards = await fetch(`../daily/${day.file}`).then((response) => response.json());
+          return { ...day, cards };
+        }));
+        return { ...manifest, days };
+      }
+
+      function getCards() {
+        const days = state.filter === "all" ? state.source.days : state.source.days.filter((day) => day.id === state.filter);
+        const query = state.query.trim().toLowerCase();
+        return days.flatMap((day) => day.cards.map((card) => normalizeCard(card, day))).filter((card) => {
+          if (!query) return true;
+          return [card.kanji, card.kana, card.meaning, card.pos, card.dayTitle].some((value) => String(value).toLowerCase().includes(query));
+        });
+      }
+
+      function renderTabs() {
+        dayTabs.innerHTML = "";
+        const tabs = [{ id: "all", title: "全部", page: "15-125" }, ...state.source.days];
+        for (const day of tabs) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = `tab ${state.filter === day.id ? "active" : ""}`;
+          button.innerHTML = day.id === "all" ? "全部" : `${day.title}<small>p.${day.page}</small>`;
+          button.addEventListener("click", () => {
+            state.filter = day.id;
+            render();
+          });
+          dayTabs.appendChild(button);
+        }
+      }
+
+      function renderRows() {
+        state.cards = getCards();
+        wordRows.innerHTML = "";
+        emptyState.hidden = state.cards.length > 0;
+        state.cards.forEach((card, index) => {
+          const row = document.createElement("tr");
+          row.tabIndex = 0;
+          row.setAttribute("role", "button");
+          row.setAttribute("aria-label", `${card.kanji} ${card.kana}`);
+          row.innerHTML = `
+            <td data-label="漢字"><span class="word">${card.kanji}</span></td>
+            <td data-label="平假名"><span class="reading">${card.kana}</span></td>
+            <td data-label="中文意思"><span class="meaning">${card.meaning}</span></td>
+            <td data-label="詞性"><span class="pos">${card.pos}</span></td>
+          `;
+          row.addEventListener("click", () => openModal(index));
+          row.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              openModal(index);
+            }
+          });
+          wordRows.appendChild(row);
+        });
+      }
+
+      function renderMeta() {
+        const total = state.source.days.reduce((sum, day) => sum + day.cards.length, 0);
+        const active = state.filter === "all" ? "全部 11 日" : state.source.days.find((day) => day.id === state.filter)?.title || "";
+        $("metricDays").textContent = state.source.days.length;
+        $("metricCards").textContent = total;
+        $("metricShown").textContent = state.cards.length;
+        $("activeText").textContent = `${active}｜${state.cards.length} 張`;
+      }
+
+      function render() {
+        renderTabs();
+        renderRows();
+        renderMeta();
+      }
+
+      function openModal(index) {
+        const card = state.cards[index];
+        state.activeCard = card;
+        $("modalDay").textContent = `${card.dayTitle}｜p.${card.page}`;
+        $("modalReading").textContent = `${card.kana} [${card.accent}]`;
+        $("modalWord").textContent = card.kanji;
+        $("modalMeaning").textContent = card.meaning;
+        $("modalPos").textContent = `POS：${card.pos}`;
+        $("modalPage").textContent = `PAGE：${card.page}`;
+        $("modalExample").textContent = card.example;
+        $("modalExampleReading").textContent = card.exampleReading;
+        $("modalExampleMeaning").textContent = card.exampleMeaning;
+        modal.classList.add("open");
+        $("closeBtn").focus();
+      }
+
+      function closeModal() {
+        modal.classList.remove("open");
+        state.activeCard = null;
+      }
+
+      async function copyCurrentWord() {
+        if (!state.activeCard) return;
+        const text = `${state.activeCard.kanji}（${state.activeCard.kana}）`;
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch {
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          textarea.remove();
+        }
+        copyStatus.classList.add("show");
+        clearTimeout(copyTimer);
+        copyTimer = setTimeout(() => copyStatus.classList.remove("show"), 1000);
+      }
+
+      searchInput.addEventListener("input", (event) => {
+        state.query = event.target.value;
+        renderRows();
+        renderMeta();
+      });
+      $("closeBtn").addEventListener("click", closeModal);
+      $("copyBtn").addEventListener("click", copyCurrentWord);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modal.classList.contains("open")) closeModal();
+      });
+      if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").then((registration) => registration.update()));
+
+      loadSource().then((source) => {
+        state.source = source;
+        render();
+      });
+    </script>
+  </body>
+</html>

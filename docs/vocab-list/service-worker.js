@@ -1,4 +1,4 @@
-const CACHE_NAME = "n3-vocab-list-v1";
+const CACHE_NAME = "n3-vocab-list-v2";
 const ASSETS = [
   "./",
   "./index.html",

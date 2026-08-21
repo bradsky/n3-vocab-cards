@@ -1,4 +1,4 @@
-const CACHE_NAME = "n3-vocab-list-v3";
+const CACHE_NAME = "n3-vocab-list-v4";
 const ASSETS = [
   "./",
   "./index.html",
@@ -14,7 +14,8 @@ const ASSETS = [
   "../daily/day-8.json",
   "../daily/day-9.json",
   "../daily/day-10.json",
-  "../daily/day-11.json"
+  "../daily/day-11.json",
+  "../daily/day-12.json"
 ];
 
 self.addEventListener("install", (event) => {

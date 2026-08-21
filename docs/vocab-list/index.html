@@ -370,8 +370,8 @@
           <h1>N3 單字總覽</h1>
         </div>
         <section class="summary" aria-label="統計">
-          <div class="metric"><strong id="metricDays">11</strong><span>天數</span></div>
-          <div class="metric"><strong id="metricCards">601</strong><span>單字</span></div>
+          <div class="metric"><strong id="metricDays">12</strong><span>天數</span></div>
+          <div class="metric"><strong id="metricCards">656</strong><span>單字</span></div>
           <div class="metric"><strong id="metricShown">0</strong><span>顯示</span></div>
         </section>
       </header>
@@ -523,7 +523,7 @@
 
       function renderTabs() {
         dayTabs.innerHTML = "";
-        const tabs = [{ id: "all", title: "全部", page: "15-125" }, ...state.source.days];
+        const tabs = [{ id: "all", title: "全部", page: "15-135" }, ...state.source.days];
         for (const day of tabs) {
           const button = document.createElement("button");
           button.type = "button";
@@ -565,7 +565,7 @@
 
       function renderMeta() {
         const total = state.source.days.reduce((sum, day) => sum + day.cards.length, 0);
-        const active = state.filter === "all" ? "全部 11 日" : state.source.days.find((day) => day.id === state.filter)?.title || "";
+        const active = state.filter === "all" ? `全部 ${state.source.days.length} 日` : state.source.days.find((day) => day.id === state.filter)?.title || "";
         $("metricDays").textContent = state.source.days.length;
         $("metricCards").textContent = total;
         $("metricShown").textContent = state.cards.length;

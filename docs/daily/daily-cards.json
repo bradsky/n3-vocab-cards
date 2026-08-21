@@ -1,5 +1,5 @@
 {
-  "title": "N3 單字卡 11日總複習",
+  "title": "N3 單字卡 12日總複習",
   "schema": "daily-files-v1",
   "days": [
     {
@@ -78,6 +78,13 @@
       "title": "第十一日",
       "page": 125,
       "file": "day-11.json"
+    },
+    {
+      "id": "day-12",
+      "day": 12,
+      "title": "第十二日",
+      "page": 135,
+      "file": "day-12.json"
     }
   ]
 }

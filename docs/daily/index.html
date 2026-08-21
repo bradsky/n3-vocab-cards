@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>N3 單字卡 11日總複習</title>
+    <title>N3 單字卡 12日總複習</title>
     <meta name="theme-color" content="#f7f4ee" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="N3 11日複習" />
+    <meta name="apple-mobile-web-app-title" content="N3 12日複習" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <link rel="manifest" href="./manifest.json" />
     <style>
@@ -69,8 +69,8 @@
     <main>
       <header>
         <div>
-          <h1>N3 單字卡 11日總複習</h1>
-          <p class="subhead">用頁碼排序成第一日到第十一日。可單日複習，也可以選「全部」混合抽卡。</p>
+          <h1>N3 單字卡 12日總複習</h1>
+          <p class="subhead">用頁碼排序成第一日到第十二日。可單日複習，也可以選「全部」混合抽卡。</p>
         </div>
         <div class="count" id="counter">1 / 1</div>
       </header>
@@ -179,7 +179,7 @@
         if (!cards.length) return;
         const card = currentCard();
         frontText.textContent = card.kana; wordReadingText.textContent = `${card.kana} [${card.accent}]`; kanjiText.textContent = card.kanji; meaningText.textContent = card.meaning; exampleText.textContent = card.example; exampleReadingText.textContent = card.exampleReading; exampleMeaningText.textContent = card.exampleMeaning; partOfSpeechText.textContent = `POS：${card.pos}`; counter.textContent = `${state.index + 1} / ${cards.length}`; progress.style.width = `${((state.index + 1) / cards.length) * 100}%`; cardShell.className = `card-shell ${state.showingBack ? "back-only" : "front-only"}`; el("flipBtn").textContent = state.showingBack ? "看正面" : "翻面";
-        const active = state.filter === "all" ? { title: "全部", page: "15-125" } : source.days.find((day) => day.id === state.filter); activeDayText.textContent = state.filter === "all" ? "全部 11 日混合" : `${active.title}｜p.${active.page}`; deckTotalText.textContent = `${cards.length} 張`;
+        const active = state.filter === "all" ? { title: "全部", page: "15-135" } : source.days.find((day) => day.id === state.filter); activeDayText.textContent = state.filter === "all" ? `全部 ${source.days.length} 日混合` : `${active.title}｜p.${active.page}`; deckTotalText.textContent = `${cards.length} 張`;
       }
       function renderWordList() { wordList.innerHTML = ""; state.order.forEach((cardIndex) => { const card = cards[cardIndex]; const item = document.createElement("li"); item.textContent = `${card.dayTitle ? card.dayTitle + "｜" : ""}${card.kana} / ${card.kanji}`; wordList.appendChild(item); }); }
       function resetDeck() { cards = filteredCards(); state.order = shuffle(cards.map((_, index) => index)); state.index = 0; state.showingBack = false; renderTabs(); render(); renderWordList(); }
